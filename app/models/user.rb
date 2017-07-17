@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable
 
   has_many :identities
-  has_many :items
+  has_many :item_groups
   has_many :votes
 
   def twitter

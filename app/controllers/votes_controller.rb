@@ -18,7 +18,7 @@ class VotesController < ApplicationController
   private
 
   def vote_params
-    params.require(:vote).permit(:body)
+    params.require(:vote).permit(:user_id, :votable_id)
   end
 
   def find_votable

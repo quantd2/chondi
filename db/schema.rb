@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170717050931) do
+ActiveRecord::Schema.define(version: 20170717161006) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "body"
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20170717050931) do
     t.string   "commentable_type"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.integer  "votes_count"
   end
 
   create_table "identities", force: :cascade do |t|
@@ -37,12 +38,21 @@ ActiveRecord::Schema.define(version: 20170717050931) do
     t.index ["user_id"], name: "index_identities_on_user_id"
   end
 
-  create_table "items", force: :cascade do |t|
-    t.integer  "user_id"
+  create_table "item_groups", force: :cascade do |t|
     t.text     "name"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_items_on_user_id"
+    t.index ["user_id"], name: "index_item_groups_on_user_id"
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.text     "name"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "votes_count"
+    t.integer  "item_group_id"
+    t.index ["item_group_id"], name: "index_items_on_item_group_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -67,6 +77,8 @@ ActiveRecord::Schema.define(version: 20170717050931) do
     t.string   "votable_type"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_votes_on_user_id"
     t.index ["votable_type", "votable_id"], name: "index_votes_on_votable_type_and_votable_id"
   end
 
