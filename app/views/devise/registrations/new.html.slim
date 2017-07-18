@@ -1,0 +1,17 @@
+<h2>Đăng ký</h2>
+
+= render "devise/shared/social_links"
+
+= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+  = devise_error_messages!
+  = f.input :name, label: "Tên", autofocus: true, placeholder: "Anonymous"
+  = f.input :email, label: "Hộp Thư", autofocus: true
+  = f.input :password, label: "Mật Khẩu", autocomplete: "off"
+  - if @minimum_password_length
+    em
+      | (
+      = @minimum_password_length
+      |  ký tự tối thiểu)
+  br
+  = f.button :submit, "Tạo Tài Khoản"
+= render "devise/shared/links"

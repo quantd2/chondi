@@ -1,0 +1,11 @@
+h2
+  | Đăng nhập
+  
+= render "devise/shared/social_links"
+
+= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+  = f.input :email, label: "Hộp Thư"
+  = f.input :password, label: "Mật Khẩu"
+  = f.input :remember_me, label: "Lưu Tài Khoản", as: :boolean
+  = f.button :submit, "Đăng Nhập"
+= render "devise/shared/links"

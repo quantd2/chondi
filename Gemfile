@@ -46,6 +46,15 @@ gem 'omniauth-google-oauth2'
 gem 'google-api-client'
 
 gem 'bower-rails'
+gem 'simple_form'
+gem 'kaminari'
+gem 'carrierwave'
+gem 'slim-rails'
+gem 'mini_magick'
+gem 'client_side_validations'
+gem 'client_side_validations-simple_form'
+gem 'font-awesome-rails'
+gem 'bootstrap-social-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

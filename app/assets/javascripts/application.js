@@ -15,3 +15,17 @@
 //= require turbolinks
 //= require bootstrap-sass-official
 //= require_tree .
+
+$(document).ready(function() {
+  $('form').submit(function() {
+    // Get the Login Name value and trim it
+    var name = $.trim($('#user_name').val());
+    // Check if empty of not
+    // return false;
+    if (name  === '') {
+      console.log("in the loop")
+      $('#user_name').val("Anonymous");
+      return true;
+    }
+  });
+});

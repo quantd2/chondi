@@ -14,4 +14,10 @@ class RegistrationsController < Devise::RegistrationsController
       resource.update_with_password(params)
     end
   end
+
+  private
+
+  def sign_up_params
+    params.require(:user).permit(:name, :email, :password)
+  end
 end

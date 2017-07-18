@@ -7,6 +7,10 @@ class User < ApplicationRecord
   has_many :identities
   has_many :item_groups
   has_many :votes
+  has_many :upvoted_items, through: :votes, source: :item
+  has_many :upvoted_comments, through: :votes, source: :comment
+
+  validates :name, length: { maximum: 20 }
 
   def twitter
     identities.where( :provider => "twitter" ).first
