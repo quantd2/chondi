@@ -8,8 +8,8 @@ ready = ->
     time = new Date().getTime()
     regexp = new RegExp($(this).data('id'), 'g')
     $(this).before($(this).data('fields').replace(regexp, time))
+    $('.form-control').enableClientSideValidations()
     event.preventDefault()
-
 
 $(document).ready(ready)
 $(document).on('page:load', ready)
