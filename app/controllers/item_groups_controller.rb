@@ -14,10 +14,10 @@ class ItemGroupsController < ApplicationController
 
   def create
     @item_group = ItemGroup.new(item_group_params)
-    if @item_group.save
+    if @item_group.save and @item_group.items.size.between? 2, 5
       redirect_to url_for(:controller => :welcome, :action => :index), notice: "Tạo thành công nhóm chọn."
     else
-      render :new
+      redirect_to new_item_group_path, alert: "Bạn chỉ được có 2-5 lựa chọn"
     end
   end
 
@@ -26,7 +26,7 @@ class ItemGroupsController < ApplicationController
   end
 
   def update
-    @item_group = ItemGroup.find(item_group_params)
+    @item_group = ItemGroup.find(params[:id])
     if @item_group.update_attributes(item_group_params)
       redirect_to @item_group, notice: "Successfully updated survey."
     else

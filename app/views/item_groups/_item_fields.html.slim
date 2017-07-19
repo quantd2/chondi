@@ -1,6 +1,4 @@
-fieldset
-  = f.label :name, "item"
-  br
-  = f.text_field :name, validate: { presence: true }
-  br
-  = link_to "remove", '#', class: "remove_fields"
+.col-sm-3.item-fields
+  fieldset
+    = f.input :name, label: "tên lựa chọn"
+    = link_to "bỏ lựa chọn", '#', class: "remove_fields btn btn-danger input-button"
