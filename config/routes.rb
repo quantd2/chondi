@@ -10,10 +10,10 @@ Rails.application.routes.draw do
     get '/users/auth/:provider/setup', :to => 'omniauth_callbacks#setup'
   end
 
-  resources :users do
-    resources :items do
-      resources :comments
-    end
+
+  resources :item_groups do
+    resources :comments
+    resources :items
   end
 
   resources :comments do

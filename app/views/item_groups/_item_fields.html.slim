@@ -1,0 +1,6 @@
+fieldset
+  = f.label :name, "item"
+  br
+  = f.text_field :name, validate: { presence: true }
+  br
+  = link_to "remove", '#', class: "remove_fields"

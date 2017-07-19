@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sass-official
+//= require rails.validations
+//= require rails.validations.simple_form
 //= require_tree .
 
 $(document).ready(function() {

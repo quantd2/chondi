@@ -1,0 +1,20 @@
+= form_for @item_group, validate: true do |f|
+  - if @item_group.errors.any?
+    .alert-danger
+      h2
+        = pluralize(@item_group.errors.count, "error")
+        |  không thể tạo nhóm lựa chọn đươc vì:
+      ul
+        - @item_group.errors.full_messages.each do |msg|
+          li
+            = msg
+  .field
+    = f.label :name
+    br
+    = f.text_field :name, validate: true
+  - 2.times do
+    = f.fields_for :items, Item.new do |builder|
+      = render 'item_fields', f: builder
+  = link_to_add_fields "Add Item", f, :items
+  .actions
+    = f.submit

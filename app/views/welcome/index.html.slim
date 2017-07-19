@@ -1,0 +1,11 @@
+.row
+  h3.welcome-msg Nơi giúp bạn đỡ đau đầu
+  .col-sm-9
+    ol.list-group
+    - @item_groups.each do |ig|
+      li.list-group-item
+        h3
+          = ig.name
+  .col-sm-3
+    = render "welcome/side"
+      
