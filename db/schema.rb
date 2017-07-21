@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170719113749) do
+ActiveRecord::Schema.define(version: 20170721053135) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "body"
@@ -18,7 +18,6 @@ ActiveRecord::Schema.define(version: 20170719113749) do
     t.string   "commentable_type"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
-    t.integer  "votes_count"
   end
 
   create_table "identities", force: :cascade do |t|
@@ -40,19 +39,62 @@ ActiveRecord::Schema.define(version: 20170719113749) do
 
   create_table "item_groups", force: :cascade do |t|
     t.string   "name"
-    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_item_groups_on_user_id"
   end
 
   create_table "items", force: :cascade do |t|
+    t.integer  "item_group_id"
+    t.integer  "user_id"
     t.string   "name"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.integer  "votes_count"
-    t.integer  "item_group_id"
+    t.string   "image"
     t.index ["item_group_id"], name: "index_items_on_item_group_id"
+    t.index ["user_id"], name: "index_items_on_user_id"
+  end
+
+  create_table "rs_evaluations", force: :cascade do |t|
+    t.string   "reputation_name"
+    t.string   "source_type"
+    t.integer  "source_id"
+    t.string   "target_type"
+    t.integer  "target_id"
+    t.float    "value",           default: 0.0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "data"
+    t.index ["reputation_name", "source_id", "source_type", "target_id", "target_type"], name: "index_rs_evaluations_on_reputation_name_and_source_and_target", unique: true
+    t.index ["reputation_name"], name: "index_rs_evaluations_on_reputation_name"
+    t.index ["source_id", "source_type"], name: "index_rs_evaluations_on_source_id_and_source_type"
+    t.index ["target_id", "target_type"], name: "index_rs_evaluations_on_target_id_and_target_type"
+  end
+
+  create_table "rs_reputation_messages", force: :cascade do |t|
+    t.string   "sender_type"
+    t.integer  "sender_id"
+    t.integer  "receiver_id"
+    t.float    "weight",      default: 1.0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["receiver_id", "sender_id", "sender_type"], name: "index_rs_reputation_messages_on_receiver_id_and_sender", unique: true
+    t.index ["receiver_id"], name: "index_rs_reputation_messages_on_receiver_id"
+    t.index ["sender_id", "sender_type"], name: "index_rs_reputation_messages_on_sender_id_and_sender_type"
+  end
+
+  create_table "rs_reputations", force: :cascade do |t|
+    t.string   "reputation_name"
+    t.float    "value",           default: 0.0
+    t.string   "aggregated_by"
+    t.string   "target_type"
+    t.integer  "target_id"
+    t.boolean  "active",          default: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "data"
+    t.index ["reputation_name", "target_id", "target_type"], name: "index_rs_reputations_on_reputation_name_and_target", unique: true
+    t.index ["reputation_name"], name: "index_rs_reputations_on_reputation_name"
+    t.index ["target_id", "target_type"], name: "index_rs_reputations_on_target_id_and_target_type"
   end
 
   create_table "users", force: :cascade do |t|
@@ -71,16 +113,6 @@ ActiveRecord::Schema.define(version: 20170719113749) do
     t.string   "name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  end
-
-  create_table "votes", force: :cascade do |t|
-    t.integer  "votable_id"
-    t.string   "votable_type"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.integer  "user_id"
-    t.index ["user_id"], name: "index_votes_on_user_id"
-    t.index ["votable_type", "votable_id"], name: "index_votes_on_votable_type_and_votable_id"
   end
 
 end

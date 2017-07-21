@@ -1,0 +1,18 @@
+li
+  - item_group.items.each do |item|
+    = image_tag item.image.url
+    div
+      = item.name
+      = link_to "up", vote_item_path(item, type: "up"), method: "post"
+      ||
+      = link_to "down", vote_item_path(item, type: "down"), method: "post"
+  div.details
+    = link_to "chi tiết và bình luận", item_group_path(item_group.id)
+    
+    
+    .flexslider
+      ul.slides
+        li
+          img src="slide1.jpg"
+        li
+          img src="slide2.jpg"

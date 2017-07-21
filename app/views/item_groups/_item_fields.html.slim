@@ -1,4 +1,5 @@
 .col-sm-3.item-fields
   fieldset
     = f.input :name, label: "tên lựa chọn"
+    = f.file_field :image
     = link_to "bỏ lựa chọn", '#', class: "remove_fields btn btn-danger input-button"

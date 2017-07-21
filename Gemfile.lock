@@ -33,6 +33,7 @@ GEM
       activemodel (= 5.0.4)
       activesupport (= 5.0.4)
       arel (~> 7.0)
+    activerecord-reputation-system (3.0.1)
     activesupport (5.0.4)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (~> 0.7)
@@ -88,8 +89,8 @@ GEM
     faraday (0.11.0)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.18)
-    font-awesome-rails (4.7.0.2)
-      railties (>= 3.2, < 5.2)
+    flexslider (2.2.0)
+      sass-rails (>= 3.1.0)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     google-api-client (0.13.1)
@@ -326,6 +327,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-reputation-system
   bootstrap-social-rails
   bower-rails
   byebug
@@ -335,7 +337,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   dotenv-rails
-  font-awesome-rails
+  flexslider
   google-api-client
   instagram
   jbuilder (~> 2.5)

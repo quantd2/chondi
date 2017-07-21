@@ -1,8 +1,9 @@
 class CreateItems < ActiveRecord::Migration[5.0]
   def change
     create_table :items do |t|
-      t.references :group_items, foreign_key: true, index: true
-      t.text :name
+      t.belongs_to :item_group, index: true
+      t.belongs_to :user, index: true
+      t.string :name
 
       t.timestamps
     end

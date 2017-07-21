@@ -53,8 +53,9 @@ gem 'slim-rails'
 gem 'mini_magick'
 gem 'client_side_validations'
 gem 'client_side_validations-simple_form'
-gem 'font-awesome-rails'
 gem 'bootstrap-social-rails'
+gem 'activerecord-reputation-system'
+gem 'flexslider'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

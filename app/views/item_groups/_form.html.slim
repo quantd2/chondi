@@ -8,7 +8,7 @@
         - @item_group.errors.full_messages.each do |msg|
           li
             = msg
-  = f.input :name, label: "tên lựa chọn", validate: true
+  = f.input :name, label: "tên nhóm lựa chọn", validate: true
   - 2.times do
     = f.simple_fields_for :items, Item.new do |builder|
       = render 'item_fields', f: builder

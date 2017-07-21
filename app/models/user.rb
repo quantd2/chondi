@@ -5,12 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable
 
   has_many :identities
-  has_many :item_groups
-  has_many :votes
-  has_many :upvoted_items, through: :votes, source: :item
-  has_many :upvoted_comments, through: :votes, source: :comment
+  has_many :items
+  has_many :item_groups, through: :items
 
-  validates :name, length: { maximum: 20 }
+  validates :name, length: { maximum: 20 }, presence: true
 
   def twitter
     identities.where( :provider => "twitter" ).first
