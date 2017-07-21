@@ -3,6 +3,8 @@
   .col-sm-9
     ol.item_groups
       - @item_groups.each do |ig|
+        div.group-description
+          h3 = link_to ig.name, item_group_path(ig.id)
         .flexslider
           ul.slides
             - ig.items.each do |item|
@@ -12,8 +14,6 @@
                 = link_to "up", vote_item_path(item, type: "up"), method: "post"
                 ||
                 = link_to "down", vote_item_path(item, type: "down"), method: "post"
-                div.details
-                  = link_to "chi tiết và bình luận", item_group_path(ig.id)
         
   .col-sm-3
     = render "welcome/side"

@@ -27,7 +27,7 @@ input:focus:-ms-input-placeholder { color:transparent; } /* IE 10+ */
 body {
   font-family: 'Roboto', sans-serif;
   /*color: #fff;*/
-  font-size : 18px;
+  font-size : 16px;
   line-height: 1.5;
 }
 
@@ -136,4 +136,8 @@ h4 {
     line-height: 1.22222222;
     /* (22px / 18px */
   }
+}
+
+a:hover {
+  text-decoration: none;
 }
