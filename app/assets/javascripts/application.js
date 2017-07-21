@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sass-official
-//= require jquery-fileupload/basic
 //= require rails.validations
 //= require rails.validations.simple_form
 //= require jquery.flexslider-min

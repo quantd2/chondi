@@ -3,7 +3,18 @@
   .col-sm-9
     ol.item_groups
       - @item_groups.each do |ig|
-        = render "item_groups/item_group_summary.html.slim", item_group: ig
+        .flexslider
+          ul.slides
+            - ig.items.each do |item|
+              li
+                = image_tag item.image.url
+                = item.name
+                = link_to "up", vote_item_path(item, type: "up"), method: "post"
+                ||
+                = link_to "down", vote_item_path(item, type: "down"), method: "post"
+                div.details
+                  = link_to "chi tiết và bình luận", item_group_path(ig.id)
+        
   .col-sm-3
     = render "welcome/side"
       
