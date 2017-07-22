@@ -1,0 +1,14 @@
+/ - if params[:type] == "up"
+/   | $("#item_#{params[:id]} .up").css('color', 'green');
+/   | $("#item_#{params[:id]} .number).val("#{pluralize @item.reputation_for(:votes).to_s}");
+/   | console.log("#{@item.reputation_for(:votes).to_s}")
+/ - else 
+/   | $("#item_#{params[:id]} .down").css('color', 'red');
+  
+- if params[:type] == "up"
+  | $("#item_#{params[:id]} .up").css('color', 'green'); 
+  | $("#item_#{params[:id]} .number").text("#{pluralize @item.reputation_for(:votes).to_i, "vote"}")
+  / | $("#item_#{params[:id]} .up").css('color', 'green'); $("#item_#{params[:id]} .number).val("#{pluralize @item.reputation_for(:votes).to_s}");
+- else
+  | $("#item_#{params[:id]} .down").css('color', 'red');
+  | $("#item_#{params[:id]} .number").text("#{pluralize @item.reputation_for(:votes).to_i, "vote"}")

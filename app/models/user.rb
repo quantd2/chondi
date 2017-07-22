@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :items
   has_many :item_groups, through: :items
 
+  has_reputation :votes, source: {reputation: :votes, of: :items}, aggregated_by: :sum
+
   validates :name, length: { maximum: 20 }, presence: true
 
   def twitter

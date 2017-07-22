@@ -14,9 +14,4 @@
       = render 'item_fields', f: builder
   = link_to_add_fields "Thêm lựa chọn", f, :items
   = f.button :submit, value: "Đăng Nhóm", class: "btn btn-success input-button"
-    
-    / = simple_form_for @item, :html => { :multipart => true }, validate: true do |f|
-    /   = f.input :weight, label: "cân nặng (gram)", :validate => true
-    /   = f.input :height, label: "chiều dài (cm)", :validate => true
-    /   = f.file_field :images, onchange: "validateFiles(this);", class: "btn btn-success input-button", data: { max_file_size: 3.megabytes }, multiple: true, :validate => true
-    /   = f.button :submit, value: "Đăng Sâm", class: "btn btn-success input-button"
+  

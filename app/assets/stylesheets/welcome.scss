@@ -10,3 +10,14 @@
 .group-description a {
   color: black;
 }
+
+.flexslider .slides img {
+  width: 50%;
+  // position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.item-name, .vote {
+  text-align: center;
+}
