@@ -1,6 +1,6 @@
-- if params[:type] == "up"
+- if params[:type] == "up" #and @option.evaluated_by(:votes, current_user)
   | $("#option_#{params[:id]} .up").css('color', 'green'); 
   | $("#option_#{params[:id]} .number").text("#{pluralize @option.reputation_for(:votes).to_i, "vote"}")
 - else
-  | $("#option_#{params[:id]} .down").css('color', 'red');
+  | $("#option_#{params[:id]} .down").css('color', 'gray');
   | $("#option_#{params[:id]} .number").text("#{pluralize @option.reputation_for(:votes).to_i, "vote"}")

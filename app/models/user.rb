@@ -13,8 +13,8 @@ class User < ApplicationRecord
   validates :name, length: { maximum: 20 }, presence: true
 
 
-  def voted_for?(poll)
-    poll.options.evaluated_by(:votes, self)
+  def is_neutral?(option)
+    option.evaluations.where(source_id: self.id).first.value == 0
   end
   #
   # def voted_for?(poll)

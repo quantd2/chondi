@@ -13,17 +13,15 @@ Rails.application.routes.draw do
 
   resources :polls do
     resources :comments
-    resources :options do
-      member { post :vote }
-    end
+    resources :options
   end
 
   resources :comments do
     resources :comments
   end
 
-  # resources :options do
-  #   member { post :vote }
-  # end
+  resources :options do
+    member { post :vote }
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
