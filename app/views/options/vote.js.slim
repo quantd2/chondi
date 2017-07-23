@@ -1,6 +1,9 @@
 - if params[:type] == "up" #and @option.evaluated_by(:votes, current_user)
-  | $("#option_#{params[:id]} .up").css('color', 'green'); 
-  | $("#option_#{params[:id]} .number").text("#{pluralize @option.reputation_for(:votes).to_i, "vote"}")
+  | $("#option_#{params[:id]} .up").attr('href','/options/#{params[:id]}/vote?type=down');
+  | $("#option_#{params[:id]} .up").attr('class','down');
 - else
-  | $("#option_#{params[:id]} .down").css('color', 'gray');
-  | $("#option_#{params[:id]} .number").text("#{pluralize @option.reputation_for(:votes).to_i, "vote"}")
+  | $("#option_#{params[:id]} .down").attr('href','/options/#{params[:id]}/vote?type=up');
+  | $("#option_#{params[:id]} .down").attr('class','up');
+  
+| $("#option_#{params[:id]} .number").text("#{pluralize @option.reputation_for(:votes).to_i, "vote"}");
+| $("#option_#{params[:id]}").parents(".poll").find(".total").text("Total votes: #{@option.poll.votes_summary}");

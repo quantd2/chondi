@@ -14,7 +14,9 @@ class User < ApplicationRecord
 
 
   def is_neutral?(option)
-    option.evaluations.where(source_id: self.id).first.value == 0
+    # Rails.cache.fetch('user_' + id.to_s + '_voted_for_' + option.id.to_s) {
+      option.evaluations.where(source_id: self.id).first.value == 0
+    # }
   end
   #
   # def voted_for?(poll)

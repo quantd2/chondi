@@ -10,6 +10,14 @@ class Poll < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 50 }
 
+  def normalized_votes_for(option)
+    votes_summary == 0 ? 0 : (option.reputation_for(:votes).to_f / votes_summary) * 100
+  end
+
+  def votes_summary
+    options.inject(0) {|summary, option| summary + option.reputation_for(:votes)}
+  end
+
   # , before_add: :validate_option_limit
 
   # def validate_option_limit option

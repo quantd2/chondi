@@ -1,28 +1,28 @@
-.row
-  h3.welcome-msg Nơi giúp bạn đỡ đau đầu vì quá nhiều lựa chọn
-  .col-sm-9
-    ol.polls
-      - @polls.each do |poll|
-        div.poll-description
-          h3 = link_to poll.name, poll_path(poll.id)
-        .flexslider
-          ul.slides
-            - poll.options.each do |option|
-              li id="option_#{option.id}"
-                = image_tag option.image.thumb.url
-                .option-name = option.name
-                .vote
-                  .number
-                    = pluralize option.reputation_for(:votes).to_i, "vote"
-                  .action
+h3.welcome-msg Nơi giúp bạn đỡ đau đầu vì quá nhiều lựa chọn
+ol.polls-list
+  - @polls.each do |poll|
+    .poll
+      .poll-description
+        h3 = link_to poll.name, poll_path(poll.id)
+        b.total Total votes: #{poll.votes_summary}
+      .flexslider
+        ul.slides
+          - poll.options.each do |option|
+            li id="option_#{option.id}"
+              = image_tag option.image.thumb.url
+              .option-name = option.name
+              .vote
+                .number
+                  = pluralize option.reputation_for(:votes).to_i, "vote"
+                .action
+                  - if current_user
                     - if current_user.is_neutral? option
                       = link_to vote_option_path(option, type: "up"), method: "post", class: "up", remote: true do
-                        i.fa.fa-arrow-up.fa-2x           
-                    - else
-                      = link_to vote_option_path(option, type: "down"), method: "post", class: "voted", remote: true do
                         i.fa.fa-arrow-up.fa-2x
-                      
-                    
-  .col-sm-3
-    = render "welcome/side"
-      
+                    - else
+                      = link_to vote_option_path(option, type: "down"), method: "post", class: "down", remote: true do
+                        i.fa.fa-arrow-up.fa-2x
+                  - else
+                    = link_to vote_option_path(option, type: "up"), method: "post", class: "up" do
+                      i.fa.fa-arrow-up.fa-2x
+                          

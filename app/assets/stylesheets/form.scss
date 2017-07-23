@@ -1,9 +1,14 @@
 .option-fields {
-  height: 9em;
+  height: 11em;
+}
+
+input[name="commit"] {
+  margin-top: 2em;
 }
 
 .add_fields.btn {
   margin-right: 0.5em;
+  margin-top: 2em;
 }
 
 input[type="file"] {
