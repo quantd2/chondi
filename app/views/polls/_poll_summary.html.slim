@@ -1,0 +1,12 @@
+li
+  - poll.items.each do |item|
+    = image_tag item.image.url
+    div
+      = item.name
+      = link_to "up", vote_option_path(item, type: "up"), method: "post"
+      ||
+      = link_to "down", vote_option_path(item, type: "down"), method: "post"
+  div.details
+    = link_to "chi tiết và bình luận", poll_path(poll.id)
+    
+    

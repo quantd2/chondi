@@ -12,15 +12,13 @@
   <body>
     <%= render 'layouts/header' %>
     <div class="container-fluid" id="page"</div>
-      <% if notice.present? %>
-        <aside class="alert alert-info">
-          <%= notice %>
-        </aside>
-      <% end %>
-      <% if alert.present? %>
-        <aside class="alert alert-danger">
-          <%= alert %>
-        </aside>
+      <% flash.each do |key, value| %>
+        <% if key == "notice" %>
+          <% key = "info" %>
+        <% end %>
+        <div class="alert alert-<%= key %>">
+          <%= value %>
+        </div>
       <% end %>
       <%= yield %>
       <%= render 'layouts/footer' %>

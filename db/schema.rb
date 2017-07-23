@@ -37,21 +37,21 @@ ActiveRecord::Schema.define(version: 20170721053135) do
     t.index ["user_id"], name: "index_identities_on_user_id"
   end
 
-  create_table "item_groups", force: :cascade do |t|
+  create_table "options", force: :cascade do |t|
+    t.integer  "poll_id"
+    t.integer  "user_id"
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "image"
+    t.index ["poll_id"], name: "index_options_on_poll_id"
+    t.index ["user_id"], name: "index_options_on_user_id"
   end
 
-  create_table "items", force: :cascade do |t|
-    t.integer  "item_group_id"
-    t.integer  "user_id"
+  create_table "polls", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.string   "image"
-    t.index ["item_group_id"], name: "index_items_on_item_group_id"
-    t.index ["user_id"], name: "index_items_on_user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "rs_evaluations", force: :cascade do |t|

@@ -1,8 +1,8 @@
-class Item < ApplicationRecord
+class Option < ApplicationRecord
   validates :name, presence: true, length: { maximum: 50 }
 
   belongs_to :user
-  belongs_to :item_group
+  belongs_to :poll
 
   mount_uploader :image, ImageUploader
 

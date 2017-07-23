@@ -2,6 +2,6 @@ class WelcomeController < ApplicationController
   # before_action :authenticate_user!
 
   def index
-    @item_groups = ItemGroup.all
+    @polls = Poll.all
   end
 end

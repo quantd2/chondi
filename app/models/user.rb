@@ -5,12 +5,21 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable
 
   has_many :identities
-  has_many :items
-  has_many :item_groups, through: :items
+  has_many :options
+  has_many :polls, through: :options
 
-  has_reputation :votes, source: {reputation: :votes, of: :items}, aggregated_by: :sum
+  has_reputation :votes, source: {reputation: :votes, of: :options}, aggregated_by: :sum
 
   validates :name, length: { maximum: 20 }, presence: true
+
+
+  def voted_for?(poll)
+    poll.options.evaluated_by(:votes, self)
+  end
+  #
+  # def voted_for?(poll)
+  #   Rails.cache.fetch('user_' + id.to_s + '_voted_for_' + poll.id.to_s) { options.any? {|v| v.poll == poll } }
+  # end
 
   def twitter
     identities.where( :provider => "twitter" ).first

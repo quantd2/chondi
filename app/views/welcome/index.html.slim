@@ -1,25 +1,22 @@
 .row
   h3.welcome-msg Nơi giúp bạn đỡ đau đầu vì quá nhiều lựa chọn
   .col-sm-9
-    ol.item_groups
-      - @item_groups.each do |ig|
-        div.group-description
-          h3 = link_to ig.name, item_group_path(ig.id)
+    ol.polls
+      - @polls.each do |poll|
+        div.poll-description
+          h3 = link_to poll.name, poll_path(poll.id)
         .flexslider
           ul.slides
-            - ig.items.each do |item|
-              li id="item_#{item.id}"
-                = image_tag item.image.thumb.url
-                .item-name = item.name
+            - poll.options.each do |option|
+              li id="option_#{option.id}"
+                = image_tag option.image.thumb.url
+                .option-name = option.name
                 .vote
                   .number
-                    = pluralize item.reputation_for(:votes).to_i, "vote"
+                    = pluralize option.reputation_for(:votes).to_i, "vote"
                   .action
-                    = link_to vote_item_path(item, type: "up"), method: "post", class: "up", remote: true do
-                      i.fa.fa-arrow-up.fa-2x
-                    = link_to vote_item_path(item, type: "down"), method: "post", class: "down", remote: true do
-                      i.fa.fa-arrow-down.fa-2x
-                
+                    = link_to vote_poll_option_path(poll, option, type: "up"), method: "post", class: "up", remote: true do
+                      i.fa.fa-arrow-up.fa-2x              
         
   .col-sm-3
     = render "welcome/side"
