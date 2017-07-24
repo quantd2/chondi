@@ -56,6 +56,8 @@ gem 'client_side_validations-simple_form'
 gem 'bootstrap-social-rails'
 gem 'activerecord-reputation-system'
 gem 'flexslider'
+gem 'actionpack-page_caching'
+gem 'actionpack-action_caching'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

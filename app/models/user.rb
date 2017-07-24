@@ -12,11 +12,15 @@ class User < ApplicationRecord
 
   validates :name, length: { maximum: 20 }, presence: true
 
+  # def vote_cache_key option
+  #   self.id.to_s + vote.updated_at.to_s
+  # end
 
   def is_neutral?(option)
-    # Rails.cache.fetch('user_' + id.to_s + '_voted_for_' + option.id.to_s) {
+    Rails.cache.fetch('user_' + id.to_s + '_voted_for_' + option.updated_at.to_s) {
+      return false unless option.evaluations.present?
       option.evaluations.where(source_id: self.id).first.value == 0
-    # }
+    }
   end
   #
   # def voted_for?(poll)

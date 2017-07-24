@@ -13,6 +13,7 @@ class OptionsController < ApplicationController
     value = params[:type] == "up" ? 1 : 0
     @option = Option.find(params[:id])
     @option.add_or_update_evaluation(:votes, value, current_user)
+    @option.touch
     respond_to do |format|
       format.html { redirect_to :back, info: "Cám ơn bạn đã bầu chọn!" }
       format.js

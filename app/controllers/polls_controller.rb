@@ -1,4 +1,8 @@
 class PollsController < ApplicationController
+  before_action :authenticate_user!, except: :show
+  caches_action :new
+  expire_action :create
+
   def index
    @polls = Poll.all
   end
