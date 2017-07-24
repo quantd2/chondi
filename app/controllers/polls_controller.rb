@@ -1,7 +1,6 @@
 class PollsController < ApplicationController
   before_action :authenticate_user!, except: :show
-  caches_action :new
-  expire_action :create
+  # caches_action :new
 
   def index
    @polls = Poll.all
@@ -45,6 +44,6 @@ class PollsController < ApplicationController
   end
 
   def poll_params
-    params.require(:poll).permit(:name, options_attributes: [:name, :_destroy])
+    params.require(:poll).permit(:name, options_attributes: [:name, :image, :remote_image_url, :_destroy])
   end
 end

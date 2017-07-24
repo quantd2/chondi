@@ -13,10 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sass-official
+//= require turbolinks
 //= require rails.validations
 //= require rails.validations.simple_form
 //= require jquery.flexslider-min
-//= require turbolinks
 //= require_tree .
 
 $(document).ready(function() {

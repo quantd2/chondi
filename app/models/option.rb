@@ -2,7 +2,7 @@ class Option < ApplicationRecord
   validates :name, presence: true, length: { maximum: 50 }
 
   belongs_to :user
-  belongs_to :poll
+  belongs_to :poll, touch: true
 
   mount_uploader :image, ImageUploader
 
