@@ -15,7 +15,7 @@ class Poll < ApplicationRecord
   end
 
   def votes_summary
-    options.inject(0) {|summary, option| summary + option.reputation_for(:votes)}
+    options.inject(0) {|summary, option| summary + option.reputation_for(:votes).to_i}
   end
 
   # , before_add: :validate_option_limit

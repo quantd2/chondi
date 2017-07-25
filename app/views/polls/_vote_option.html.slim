@@ -1,2 +1,7 @@
-= option.name
-= visualize_votes_for option
+.media
+  .media-left
+    = image_tag option.image.thumb.url, class: "media-object"
+  .media-body
+    .media-heading 
+      = option.name
+    = visualize_votes_for option

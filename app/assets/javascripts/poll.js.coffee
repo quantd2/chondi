@@ -1,7 +1,7 @@
 ready = ->
   $('form').on 'click', '.remove_fields', (event) ->
     $(this).prev('input[type=hidden]').val('1')
-    $(this).closest('.col-sm-3').remove()
+    $(this).closest('.option-fields').remove()
     event.preventDefault()
     return
 
@@ -26,5 +26,4 @@ ready = ->
   #
   #   reader.readAsDataURL file
 
-$(document).ready ready
 $(document).on 'turbolinks:load', ready

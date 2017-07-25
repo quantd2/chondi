@@ -2,5 +2,16 @@
 
 h2 = @poll.name
 p 
-  b.total Total votes: #{@poll.votes_summary}
+  b.total Tổng phiếu bầu: #{@poll.votes_summary}
 = render partial: 'vote_option', collection: @poll.options, as: :option
+
+hr
+h3 
+  | Bình luận
+= simple_form_for [@poll, Comment.new] do |f|
+  = f.input :body, placeholder: "Để lại lời bình", label: false
+  / = f.submit "Add Comment"
+  = f.button :submit, value: "Gửi"
+
+ul
+  = render(partial: 'comments/comment', collection: @poll.comments)

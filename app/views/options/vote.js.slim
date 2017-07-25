@@ -6,4 +6,4 @@
   | $("#option_#{params[:id]} .down").attr('class','up');
   
 | $("#option_#{params[:id]} .number").text("#{pluralize @option.reputation_for(:votes).to_i, "vote"}");
-| $("#option_#{params[:id]}").parents(".poll").find(".total").text("Total votes: #{@option.poll.votes_summary}");
+| $("#option_#{params[:id]}").parents(".poll").find(".total").text("Tổng phiếu bầu: #{@option.poll.votes_summary}");

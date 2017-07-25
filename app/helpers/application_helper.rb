@@ -16,5 +16,6 @@ module ApplicationHelper
     end
     link_to(name, '#', class: "add_fields btn btn-primary input-button", data: {id: id, fields: fields.gsub("\n", "")})
   end
+
 end
 #

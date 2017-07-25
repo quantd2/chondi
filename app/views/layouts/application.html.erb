@@ -11,7 +11,7 @@
 
   <body>
     <%= render 'layouts/header' %>
-    <div class="container-fluid" id="page"</div>
+    <div class="container-fluid" id="page">
       <% flash.each do |key, value| %>
         <% if key == "notice" %>
           <% key = "info" %>
@@ -29,6 +29,8 @@
         <div class="col-sm-3">
           <%= render "welcome/side" %>
         </div>
+      </div>
+    </div>
       <%= render 'layouts/footer' %>
     </div>
   </body>

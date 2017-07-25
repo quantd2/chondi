@@ -1,1 +1,2 @@
-= link_to "Tạo nhóm chọn", new_poll_path, class: "btn btn-primary group-creation-btn"
+- unless current_page?(new_poll_path)
+  = link_to "Tạo nhóm chọn", new_poll_path, class: "btn btn-primary group-creation-btn"
