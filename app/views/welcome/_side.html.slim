@@ -1,2 +1,8 @@
 - unless current_page?(new_poll_path)
   = link_to "Tạo nhóm chọn", new_poll_path, class: "btn btn-primary group-creation-btn"
+
+h4
+  | Nhóm được bầu nhiều nhất
+ol.hot-polls-list
+  - hot_polls.each do |poll|
+    = render "welcome/hot_poll", poll: poll

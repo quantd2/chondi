@@ -4,17 +4,23 @@ class Poll < ApplicationRecord
 
   has_many :options
   has_many :users, through: :options
-
-  accepts_nested_attributes_for :options, allow_destroy: true
   has_many :comments, as: :commentable
 
+  accepts_nested_attributes_for :options, allow_destroy: true
+
   validates :name, presence: true, length: { maximum: 50 }
+
+  scope :desc, -> { order(created_at: :desc) }
+  scope :hot, -> { order(vote_count: :desc) }
+
+  paginates_per 10
 
   def normalized_votes_for(option)
     votes_summary == 0 ? 0 : (option.reputation_for(:votes).to_f / votes_summary) * 100
   end
 
   def votes_summary
+    # a = self.options.includes(:votes)
     options.inject(0) {|summary, option| summary + option.reputation_for(:votes).to_i}
   end
 

@@ -1,6 +1,6 @@
 li id="option_#{option.id}"
   = image_tag option.image.thumb.url
-  .option-name = option.name
+  .option-name = truncate option.name, length: 10
   .vote
     .number
       = pluralize option.reputation_for(:votes).to_i, "vote"

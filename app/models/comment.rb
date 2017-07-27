@@ -4,7 +4,8 @@ class Comment < ApplicationRecord
   belongs_to :user
   alias_attribute :author, :user
   validates :body, presence: true
+  
   has_reputation :votes, source: :user, aggregated_by: :sum
 
-  paginates_per 5
+  paginates_per 10
 end

@@ -25,5 +25,8 @@ module ApplicationHelper
     link_to(name, '#', class: "add_comment", data: {id: id, fields: fields.gsub("\n", "")})
   end
 
+  def hot_polls
+    @polls = Poll.all.hot
+  end
 end
 #
