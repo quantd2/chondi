@@ -2,7 +2,7 @@
   height: 11.5em;
 }
 
-input[name="commit"] {
+.new_poll input[name="commit"] {
   margin-top: 2em;
 }
 
@@ -10,10 +10,6 @@ input[name="commit"] {
   margin-right: 0.5em;
   margin-top: 2em;
 }
-
-// input[type="file"] {
-//   margin-bottom: 5px;
-// }
 
 .remove_fields {
   margin-top: 0.5em;

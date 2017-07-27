@@ -1,4 +1,2 @@
-.col-sm-6.option-fields
-  fieldset
-    = f.input :body, label: false
-  = link_to "Xoá", '#', class: "remove_fields btn btn-danger input-button"
+= f.input :body, placeholder: "Trả lời", label: false, validate: true
+= f.button :submit, value: "Trả lời"

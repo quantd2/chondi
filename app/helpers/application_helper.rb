@@ -17,5 +17,13 @@ module ApplicationHelper
     link_to(name, '#', class: "add_fields btn btn-primary input-button", data: {id: id, fields: fields.gsub("\n", "")})
   end
 
+  def link_to_reply(name, comment)
+    id = comment.id
+    fields = simple_form_for [comment, Comment.new], html: { id: id }, validate: true, remote: true do |builder|
+      render("comments/comment_fields", f: builder)
+    end
+    link_to(name, '#', class: "add_comment", data: {id: id, fields: fields.gsub("\n", "")})
+  end
+
 end
 #

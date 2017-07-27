@@ -13,6 +13,15 @@ ready = ->
     event.preventDefault()
     return
 
+  $('.reply').on 'click', 'a', (event) ->
+    $reply = $(this).closest(".reply")
+    time = new Date().getTime()
+    regexp = new RegExp($(this).data('id'), 'g')
+    $(this).replaceWith($(this).data('fields'))#.replace(regexp, time))
+    # $reply.find('.form-control').enableClientSideValidations()
+    event.preventDefault()
+    return
+
   return
   # preview = $('.upload-preview img')
   # $('.file').change (event) ->

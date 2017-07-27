@@ -6,12 +6,5 @@ p
 = render partial: 'vote_option', collection: @poll.options, as: :option
 
 hr
-h3 
-  | Bình luận
-= simple_form_for [@poll, Comment.new] do |f|
-  = f.input :body, placeholder: "Để lại lời bình", label: false
-  / = f.submit "Add Comment"
-  = f.button :submit, value: "Gửi"
-
-ul
-  = render(partial: 'comments/comment', collection: @poll.comments)
+= render "comments/form"
+= paginate @comments

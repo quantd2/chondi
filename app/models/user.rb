@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :identities
   has_many :options
   has_many :polls, through: :options
+  has_many :comments
 
   has_reputation :votes, source: {reputation: :votes, of: :options}, aggregated_by: :sum
 

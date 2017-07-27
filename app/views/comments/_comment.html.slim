@@ -1,12 +1,14 @@
 li
-  b.author = current_user.name
+  span.expand style="cursor:pointer"
+    | [-] 
+  b.author 
+    = comment.author.name
   small.time
     |  gửi  
     = time_ago_in_words(comment.created_at) 
     |  trước
   .entry = comment.body
-  / = simple_form_for [comment, Comment.new] do |f|
-  /   = f.input :body, placeholder: "Trả lời", label: false
-  /   = f.button :submit, value: "Trả lời"
-  ul
+  .reply = link_to_reply "Trả lời", comment
+
+  ul.sub-comments
     = render partial: 'comments/comment', collection: comment.comments
