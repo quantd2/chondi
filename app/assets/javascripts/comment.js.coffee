@@ -4,7 +4,7 @@ ready = ->
   $li.each (i) ->
     $expand = $(this).find('.expand').filter(':first')
     $collapsables = $(this).find(".sub-comments")
-    if ( $collapsables.children().length == 0 ) then $expand.empty()
+    # if ( $collapsables.children().length == 0 ) then $expand.empty()
     $expand.click (e) ->
       $collapsables.slideToggle(200)
       if $expand.text() == "[-] " then $expand.text('[+] ') else $expand.text('[-] ')

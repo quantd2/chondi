@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :find_commentable
+  before_action :find_commentable, :authenticate_user!
 
   def create
     @comment = @commentable.comments.new comment_params.merge(user_id: current_user.id)

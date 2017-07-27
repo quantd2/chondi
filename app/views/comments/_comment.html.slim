@@ -1,6 +1,7 @@
 li
-  span.expand style="cursor:pointer"
-    | [-] 
+  - if comment.comments.present?
+    span.expand style="cursor:pointer"
+      | [-] 
   b.author 
     = comment.author.name
   small.time
