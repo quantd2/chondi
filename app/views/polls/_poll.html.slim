@@ -1,7 +1,7 @@
 .poll
   .poll-description
     h3 = link_to poll.name, poll_path(poll.id), target: "_blank"
-    b.total Tổng phiếu bầu: #{poll.votes_summary}
+    b.total Tổng phiếu bầu: #{poll.vote_count}
   .flexslider
     ul.slides
       - poll.options.each do |option|

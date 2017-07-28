@@ -1,20 +1,27 @@
+flexComment = ($el) ->
+  $this = $el
+  $expand = $this.find('.expand').filter(':first')
+  $collapsables = $this.find(".sub-comments")
+  $expand.on 'click', (e) ->
+    toggle($expand, $collapsables)
+    return
+  return
+
+toggle = ($exp, $col) ->
+  $col.slideToggle(200)
+  if $exp.text() == "[-] " then $exp.text('[+] ') else $exp.text('[-] ')
+  return
 
 ready = ->
   $li = $('li')
   $li.each (i) ->
-    $expand = $(this).find('.expand').filter(':first')
-    $collapsables = $(this).find(".sub-comments")
-    # if ( $collapsables.children().length == 0 ) then $expand.empty()
-    $expand.click (e) ->
-      $collapsables.slideToggle(200)
-      if $expand.text() == "[-] " then $expand.text('[+] ') else $expand.text('[-] ')
-      return
+    flexComment($(this))
     return
 
   $(document).ajaxStart ->
     $('.fa-spinner').show()
     return
-  # hide spinner on AJAX stop
+
   $(document).ajaxStop ->
     $('.fa-spinner').hide()
     return

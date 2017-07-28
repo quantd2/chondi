@@ -18,18 +18,3 @@
 //= require rails.validations.simple_form
 //= require jquery.flexslider-min
 //= require_tree .
-
-$(document).ready(function() {
-  $('#new_user').submit(function() {
-    // Get the Login Name value and trim it
-    var name = $.trim($('#user_name').val());
-    // Check if empty of not
-    console.log(name)
-    //return false;
-    if (name  === '') {
-      console.log("in the loop")
-      $('#user_name').val("Anonymous");
-      // return false;
-    }
-  });
-});

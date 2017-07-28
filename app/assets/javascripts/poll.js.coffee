@@ -1,36 +1,60 @@
+removeOption = ($el) ->
+  $this = $el
+  $hidden = $this.prev('input[type=hidden]')
+  $optionFields = $this.closest('.option-fields')
+
+  $hidden.prev('input[type=hidden]').val('1')
+  $optionFields.closest('.option-fields').remove()
+  event.preventDefault()
+  return
+
+addOption = ($el) ->
+  $this = $el
+  $data = $this.data('fields')
+  time = new Date().getTime()
+  regexp = new RegExp($this.data('id'), 'g')
+
+  $this.before($data.replace(regexp, time))
+  $('.form-control').enableClientSideValidations()
+  event.preventDefault()
+  return
+
+addComment = ($el) ->
+  $this = $el
+  $data = $this.data('fields')
+
+  $this.before($data)
+  $this.hide()
+  event.preventDefault()
+  return
+
+cancelComment = ($el) ->
+  $this = $el
+  $addComment = $this.closest('.reply').find('.add_comment')
+  $commentForm = $this.closest('.reply').find('form')
+
+  $addComment.show()
+  $commentForm.remove()
+  event.preventDefault()
+  return
+
+
 ready = ->
   $('form').on 'click', '.remove_fields', (event) ->
-    $(this).prev('input[type=hidden]').val('1')
-    $(this).closest('.option-fields').remove()
+    removeOption($(this))
     event.preventDefault()
     return
 
   $('form').on 'click', '.add_fields', (event) ->
-    time = new Date().getTime()
-    regexp = new RegExp($(this).data('id'), 'g')
-    $(this).before($(this).data('fields').replace(regexp, time))
-    $('.form-control').enableClientSideValidations()
-    event.preventDefault()
+    addOption($(this))
     return
 
   $('.reply').on 'click', '.add_comment', (event) ->
-    $reply = $(this).closest(".reply")
-    time = new Date().getTime()
-    regexp = new RegExp($(this).data('id'), 'g')
-    $(this).before($(this).data('fields'))#.replace(regexp, time))
-    $(this).hide()
-    # $reply.find('.form-control').enableClientSideValidations()
-    event.preventDefault()
+    addComment($(this))
     return
 
   $('.reply').on 'click', '.cancel', (event) ->
-    # $(this).prev('input[type=hidden]').val('1')
-    console.log($(this).closest('.reply').find('form'))
-    # $(this).closest('.reply').find('.add_comment').show()
-    $(this).closest('.reply').find('.add_comment').show()
-    $(this).closest('.reply').find('form').remove()
-
-    event.preventDefault()
+    cancelComment($(this))
     return
 
   return
