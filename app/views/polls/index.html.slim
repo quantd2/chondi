@@ -1,0 +1,7 @@
+h3 Nhóm chọn của bạn
+ol.polls-list
+  - @polls.each do |poll|
+    - cache_if current_user, poll do
+      = render "polls/poll", poll: poll
+      
+= paginate @polls

@@ -1,2 +1,4 @@
-= f.input :body, placeholder: "Trả lời", label: false, validate: true
-= f.button :submit, value: "Trả lời"
+.comment_fields
+  = f.input :body, placeholder: "Trả lời", label: false, validate: true
+  = f.button :submit, value: "Trả lời"
+  = link_to "Thoát", '#', class: "cancel btn btn-danger input-button"

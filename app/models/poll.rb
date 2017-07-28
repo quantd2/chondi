@@ -1,10 +1,12 @@
 class Poll < ApplicationRecord
-  MIN_OPTION_NUM = 2
-  MAX_OPTION_NUM = 5
+  include Common
+  # MIN_OPTION_NUM = 2
+  # MAX_OPTION_NUM = 5
 
-  has_many :options
-  has_many :users, through: :options
-  has_many :comments, as: :commentable
+  has_many :options, dependent: :destroy
+  # has_many :users, through: :options
+  belongs_to :user
+  has_many :comments, as: :commentable, dependent: :destroy
 
   accepts_nested_attributes_for :options, allow_destroy: true
 

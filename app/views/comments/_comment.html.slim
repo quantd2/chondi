@@ -9,7 +9,10 @@ li
     = time_ago_in_words(comment.created_at) 
     |  trước
   .entry = comment.body
-  .reply = link_to_reply "Trả lời", comment
-
+  .action
+    span.reply = link_to_reply "Trả lời", comment
+    - if owner? comment.user
+      span.delete
+        = link_to "Xoá", comment_path(comment), method: :delete, data: { confirm: "Bạn có muốn xoá bình luận này không?" }
   ul.sub-comments
     = render partial: 'comments/comment', collection: comment.comments

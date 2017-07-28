@@ -1,14 +1,13 @@
 class PollsController < ApplicationController
   before_action :authenticate_user!, except: :show
-  # caches_action :new
+  before_action :correct_user, only: :destroy
 
   def index
-   @polls = Poll.all
+    @polls = current_user.polls.page params[:page]
   end
 
   def show
-    # @poll = Poll.find(params[:id])
-    @poll = Poll.includes(:options).find_by_id(params[:id])
+    @poll = Poll.includes(:options, :comments).find_by_id(params[:id])
     @comments = @poll.comments.page params[:page]
   end
 
@@ -17,7 +16,7 @@ class PollsController < ApplicationController
   end
 
   def create
-    @poll = Poll.new(poll_params)
+    @poll = current_user.polls.build(poll_params)
     if @poll.save and @poll.options.size.between? 2, 5
       redirect_to url_for(:controller => :welcome, :action => :index), notice: "Tạo thành công nhóm chọn."
     else
@@ -25,26 +24,19 @@ class PollsController < ApplicationController
     end
   end
 
-  def edit
-    @poll = Poll.find(poll_params)
-  end
-
-  def update
-    @poll = Poll.find(params[:id])
-    if @poll.update_attributes(poll_params)
-      redirect_to @poll, notice: "Successfully updated poll."
-    else
-      render :edit
-    end
-  end
-
   def destroy
-    @poll = Poll.find(poll_params)
     @poll.destroy
-    redirect_to polls_url, notice: "Successfully destroyed poll."
+    redirect_to polls_url, notice: "Xoá nhóm chọn thành công."
+  end
+
+  private
+
+  def correct_user
+    @poll = current_user.polls.find_by_id(params[:id])
+    redirect_to root_path if @poll.nil?
   end
 
   def poll_params
-    params.require(:poll).permit(:name, options_attributes: [:name, :image, :remote_image_url, :_destroy])
+    params.require(:poll).permit(:name, :user_id, options_attributes: [:name, :image, :remote_image_url, :_destroy])
   end
 end

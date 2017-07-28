@@ -13,26 +13,26 @@ ready = ->
     event.preventDefault()
     return
 
-  $('.reply').on 'click', 'a', (event) ->
+  $('.reply').on 'click', '.add_comment', (event) ->
     $reply = $(this).closest(".reply")
     time = new Date().getTime()
     regexp = new RegExp($(this).data('id'), 'g')
-    $(this).replaceWith($(this).data('fields'))#.replace(regexp, time))
+    $(this).before($(this).data('fields'))#.replace(regexp, time))
+    $(this).hide()
     # $reply.find('.form-control').enableClientSideValidations()
     event.preventDefault()
     return
 
+  $('.reply').on 'click', '.cancel', (event) ->
+    # $(this).prev('input[type=hidden]').val('1')
+    console.log($(this).closest('.reply').find('form'))
+    # $(this).closest('.reply').find('.add_comment').show()
+    $(this).closest('.reply').find('.add_comment').show()
+    $(this).closest('.reply').find('form').remove()
+
+    event.preventDefault()
+    return
+
   return
-  # preview = $('.upload-preview img')
-  # $('.file').change (event) ->
-  #   input = $(event.currentTarget)
-  #   file = input[0].files[0]
-  #   reader = new FileReader
-  #
-  #   reader.onload = (e) ->
-  #     image_base64 = e.target.result
-  #     preview.attr 'src', image_base64
-  #
-  #   reader.readAsDataURL file
 
 $(document).on 'turbolinks:load', ready

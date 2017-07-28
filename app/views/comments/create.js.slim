@@ -1,17 +1,17 @@
 - if params[:comment_id]
-  |  $("##{@commentable.id}").closest("li").find("ul:first").prepend("
+  |  $("#comment_#{@commentable.id}").closest("li").find("ul:first").prepend("
   = escape_javascript(render partial: 'comments/comment', locals: { comment: @comment } )
   | ");
-  | $("##{@commentable.id}").closest("li").find("ul:first").prepend('
+  | $("#comment_#{@commentable.id}").closest("li").find("ul:first").prepend('
   i.fa.fa-spinner.fa-spin
   | ');
-  | $("##{@commentable.id}").remove();
+  | $("#comment_#{@commentable.id}").remove();
 
 - else
-  |  $("form[type='poll']").siblings("ul").prepend("
+  |  $("#poll_#{@commentable.id}").siblings("ul").prepend("
   = escape_javascript(render partial: 'comments/comment', locals: { comment: @comment } )
   | ");
-  | $("form[type='poll']").find("#comment_body").val('');
-  | $("form[type='poll']").siblings("ul").prepend('
+  | $("#poll_#{@commentable.id}").find("#comment_body").val('');
+  | $("#poll_#{@commentable.id}").siblings("ul").prepend('
   i.fa.fa-spinner.fa-spin
   | ');

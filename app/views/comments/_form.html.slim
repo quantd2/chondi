@@ -1,13 +1,7 @@
 h3 
   | Bình luận
--if current_user
-  = simple_form_for [@poll, Comment.new], html: { id: @poll.id, type: @poll.class.to_s.tableize.singularize }, remote: true, validate: true do |f|
-    = f.input :body, placeholder: "Để lại lời bình", label: false, validate: true
-    = f.button :submit, value: "Gửi"
--else 
-  = simple_form_for [@poll, Comment.new], html: { id: @poll.id, type: @poll.class.to_s.tableize.singularize }, validate: true do |f|
-    = f.input :body, placeholder: "Để lại lời bình", label: false, validate: true
-    = f.button :submit, value: "Gửi"
-
+= simple_form_for [@poll, Comment.new], html: { id: @poll.normalized_id }, remote: signed_in?, validate: true do |f|
+  = f.input :body, placeholder: "Để lại lời bình", label: false, validate: true
+  = f.button :submit, value: "Gửi"
 ul
   = render(partial: 'comments/comment', collection: @comments)

@@ -1,0 +1,24 @@
+header.navbar.navbar-default[role="navigation"]
+  .container
+    .navbar-header
+      i.fa.fa-question-circle.fa-3x.pull-left[aria-hidden="true"]
+      = link_to "Chọn Chơi", root_path, class: "navbar-brand"
+      button.navbar-toggle[type="button" data-toggle="collapse" data-target=".navbar-ex1-collapse"]
+        span.sr-only
+          | Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+    .collapse.navbar-collapse.navbar-ex1-collapse.pull-right
+      ul.nav.navbar-nav
+        - if signed_in?
+          li
+            / | tài khoản: 
+            = link_to current_user.name, polls_path
+          li
+            = link_to "Thoát", destroy_user_session_path, method: :delete
+        - else
+          li
+            = link_to "Đăng Ký", new_user_registration_path
+          li
+            = link_to "Đăng Nhập", new_user_session_path

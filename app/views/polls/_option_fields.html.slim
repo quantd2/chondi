@@ -2,9 +2,9 @@
   fieldset
     = f.input :name, label: "tên lựa chọn"
     label.btn.btn-primary
-      |  Chọn hình 
-      = f.file_field :image, id:"my-file-selector", style:"display:none;", onchange:"$('#upload-file-info').html(this.files[0].name)"
-      span.label.label-info#upload-file-info
-    label.remote-image
+      |  Kèm hình 
+      = f.file_field :image
+      / span.label.label-info#upload-file-info
+    / label.remote-image
       / = f.text_field :remote_image_url, placeholder: "Đường dẫn hình"
   = link_to "Bỏ lựa chọn", '#', class: "remove_fields btn btn-danger input-button"

@@ -6,6 +6,5 @@ class WelcomeController < ApplicationController
 
   def index
     @polls = Poll.all.includes(:options).desc.page params[:page]
-    # @polls = Poll.all.desc.page params[:page]
   end
 end
