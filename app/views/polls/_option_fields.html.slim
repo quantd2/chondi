@@ -1,10 +1,6 @@
 .col-sm-6.option-fields
   fieldset
     = f.input :name, label: "tên lựa chọn"
-    label.btn.btn-primary
-      |  Kèm hình 
-      = f.file_field :image
-      / span.label.label-info#upload-file-info
-    / label.remote-image
-      / = f.text_field :remote_image_url, placeholder: "Đường dẫn hình"
+    = f.file_field :image
+    
   = link_to "Bỏ lựa chọn", '#', class: "remove_fields btn btn-danger input-button"

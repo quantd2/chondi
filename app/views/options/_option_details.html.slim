@@ -1,0 +1,15 @@
+.option-name = option_name_display option.name
+.vote
+  .number
+    = pluralize option.reputation_for(:votes).to_i, "vote"
+  .action
+    - if current_user
+      - if current_user.is_neutral? option
+        = link_to vote_option_path(option, type: "up"), method: "post", class: "up", remote: true do
+          i.fa.fa-arrow-up.fa-2x
+      - else
+        = link_to vote_option_path(option, type: "down"), method: "post", class: "down", remote: true do
+          i.fa.fa-arrow-up.fa-2x
+    - else
+      = link_to vote_option_path(option, type: "up"), method: "post", class: "up" do
+        i.fa.fa-arrow-up.fa-2x

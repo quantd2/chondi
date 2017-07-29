@@ -1,8 +1,8 @@
-.media
+.media id="option_#{option.id}"
   .media-left
     = image_tag option.image.thumb.url, class: "media-object"
   .media-body
     .media-heading 
-      = option.name
+      = render "options/option_details", option: option, layout: "poll_details"
     .stats
       = visualize_votes_for option
