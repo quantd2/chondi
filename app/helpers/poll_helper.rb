@@ -17,9 +17,10 @@ module PollHelper
           "#{option.reputation_for(:votes)}"
         end
       end
-      all_stats.push raw stats
+      all_stats.push raw stats.to_s
     end
-    all_stats
+    puts all_stats
+    return all_stats
   end
 
   def option_name_display name

@@ -30,7 +30,7 @@ module ApplicationHelper
   end
 
   def owner? user
-    current_user.email == user.email
+    current_user and current_user.email == user.email
   end
 end
 #

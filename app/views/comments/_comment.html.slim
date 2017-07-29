@@ -1,4 +1,16 @@
-li
+li.comment id="show_comment_#{comment.id}"
+  span.action.vote
+    - if current_user
+      - if current_user.is_neutral? comment
+        = link_to vote_comment_path(comment, type: "up"), method: "post", class: "up", remote: true do
+          i.fa.fa-arrow-up.fa-1x
+      - else
+        = link_to vote_comment_path(comment, type: "down"), method: "post", class: "down", remote: true do
+          i.fa.fa-arrow-up.fa-1x
+    - else
+      = link_to vote_comment_path(comment, type: "up"), method: "post", class: "up" do
+        i.fa.fa-arrow-up.fa-1x
+      
   - if comment.comments.present?
     span.expand style="cursor:pointer"
       | [-] 
@@ -8,6 +20,8 @@ li
     |  gửi  
     = time_ago_in_words(comment.created_at) 
     |  trước
+  small.number
+    = pluralize comment.reputation_for(:votes).to_i, "vote"
   .entry = comment.body
   .action
     span.reply = link_to_reply "Trả lời", comment

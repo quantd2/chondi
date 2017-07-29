@@ -20,6 +20,17 @@ class CommentsController < ApplicationController
     redirect_to :back, notice: "Xoá lời bình thành công."
   end
 
+  def vote
+    value = params[:type] == "up" ? 1 : 0
+    @comment = Comment.find(params[:id])
+    @comment.add_or_update_evaluation(:votes, value, current_user)
+    # @commnet.touch
+    respond_to do |format|
+      format.html { redirect_to :back, info: "Cám ơn bạn đã bầu chọn!" }
+      format.js
+    end
+  end
+
   private
 
   def comment_params

@@ -4,10 +4,10 @@
 | $number = $option.find(".number");
 | $total = $option.parents(".poll").find(".total");
 | $stats = $option.find(".stats");
-/ | statsContent = '#{visualize_votes_for(@option)}';
+| allStatsContent = #{raw visualize_vote_all_options(@option.poll.options)};
 | $allStats = $(".stats");
 
-- if params[:type] == "up" #and @option.evaluated_by(:votes, current_user)
+- if params[:type] == "up"
   | $up.attr('href','/options/#{params[:id]}/vote?type=down');
   | $up.attr('class','down');
 - else
@@ -17,7 +17,5 @@
 | $number.text("#{pluralize @option.reputation_for(:votes).to_i, "vote"}");
 | $total.text("Tổng phiếu bầu: #{@option.poll.votes_summary}");
 | $allStats.each(function(index){
-|     statsContent = '#{visualize_votes_for(@option.poll[index])}';
-|     console.log(statsContent);
-|     $(this).html(statsContent);
+|     $(this).html(allStatsContent[index]);
 | });

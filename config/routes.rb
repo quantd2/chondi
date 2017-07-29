@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   resources :comments do
     resources :comments
+    member { post :vote }
   end
 
   resources :options do
