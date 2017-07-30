@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root 'welcome#index'
   get 'welcome/index'
 
@@ -28,7 +29,9 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    # get 'dashboard/index'
     get '', to: 'dashboard#index', as: '/'
+    resources :polls
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
