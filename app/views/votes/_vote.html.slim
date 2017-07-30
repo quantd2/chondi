@@ -1,0 +1,10 @@
+- if current_user
+  - if current_user.is_neutral? votable
+    = link_to path_send('vote_' + "#{votable.normalized_name}" + '_path', votable, type: "up"), method: "post", class: "up", remote: true do
+      i.fa.fa-arrow-up.fa-2x
+  - else
+    = link_to path_send('vote_' + "#{votable.normalized_name}" + "_path", votable, type: "down"), method: "post", class: "down", remote: true do
+      i.fa.fa-arrow-up.fa-2x
+- else
+  = link_to path_send('vote_' + "#{votable.normalized_name}" + '_path', votable, type: "up"), method: "post", class: "up" do
+    i.fa.fa-arrow-up.fa-2x

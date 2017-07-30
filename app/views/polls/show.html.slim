@@ -1,8 +1,10 @@
-- content_for(:page_header) {"Share your opinion"}
 .poll
   h2 = @poll.name
+  small.report
+    = render "reports/report", reportable: @poll
   p 
     b.total Tổng phiếu bầu: #{@poll.votes_summary}
+  
   = render partial: 'vote_option', collection: @poll.options, as: :option
   - if owner? @poll.user
     .settings

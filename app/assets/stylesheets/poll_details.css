@@ -18,7 +18,7 @@
   margin-left: 1em;
 }
 
-span.delete, small.number {
+small.delete, small.number {
   margin-left: 1em;
 }
 
@@ -44,6 +44,6 @@ li.comment {
 
 .action.vote {
   position: absolute;
-  left: -1.3em;
+  left: -1.53em;
   top: 1.4em;
 }

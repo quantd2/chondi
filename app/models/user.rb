@@ -13,16 +13,20 @@ class User < ApplicationRecord
 
   validates :name, length: { maximum: 20 }, presence: true
 
-  def vote_cache_key option
-    'user_' + id.to_s + 'voted_for' + option.updated_at.to_s
+  def vote_cache_key votable
+    'user_' + id.to_s + 'voted_for' + votable.updated_at.to_s
   end
 
-  def is_neutral?(option)
-    Rails.cache.fetch(vote_cache_key option) {
-      return true unless option.evaluations.present?
-      return true unless option.evaluations.where(source_id: self.id).present?
-      option.evaluations.where(source_id: self.id).first.value == 0
+  def is_neutral?(votable)
+    Rails.cache.fetch(vote_cache_key votable) {
+      return true unless votable.evaluations.present?
+      return true unless votable.evaluations.where(source_id: self.id).present?
+      votable.evaluations.where(source_id: self.id).first.value == 0
     }
+  end
+
+  def reported?(reportable)
+    reportable.reports.where(user_id: id).present?
   end
 
   def twitter

@@ -20,24 +20,13 @@ class PollsController < ApplicationController
     if @poll.save and @poll.options.size.between? 2, 5
       redirect_to url_for(:controller => :welcome, :action => :index), notice: "Tạo thành công nhóm chọn."
     else
-      redirect_to new_poll_path, alert: "Bạn chỉ được có 2-5 lựa chọn"
+      redirect_to new_poll_path, alert: "Bạn chỉ được có 2-10 lựa chọn"
     end
   end
 
   def destroy
     @poll.destroy
     redirect_to polls_url, notice: "Xoá nhóm chọn thành công."
-  end
-
-  def report
-    value = params[:report] == "up" ? 1
-    @poll = Poll.find(poll[:id])
-    Report.create(user_id: current_user.id)
-    # @option.touch
-    respond_to do |format|
-      format.html { redirect_to :back, info: "Cám ơn bạn đã bầu chọn!" }
-      format.js
-    end
   end
 
   private

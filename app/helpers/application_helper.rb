@@ -32,5 +32,9 @@ module ApplicationHelper
   def owner? user
     current_user and current_user.email == user.email
   end
+
+  def path_send *arg
+    Rails.application.routes.url_helpers.send *arg
+  end
 end
 #

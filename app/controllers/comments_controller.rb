@@ -6,10 +6,10 @@ class CommentsController < ApplicationController
     @comment = @commentable.comments.new comment_params.merge(user_id: current_user.id)
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to :back, info: "Cám ơn bạn đã bầu chọn!" }
+        format.html { redirect_back fallback_location: :back, info: "Cám ơn bạn đã tham gia bình luận!" }
         format.js
       else
-        format.html { redirect_to :back, notice: "Your comment wasn't posted!"}
+        format.html { redirect_back fallback_location: :back, notice: "Vui lòng thử lại sau!"}
         format.js
       end
     end

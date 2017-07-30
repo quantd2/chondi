@@ -1,15 +1,6 @@
 li.comment id="show_comment_#{comment.id}"
   span.action.vote
-    - if current_user
-      - if current_user.is_neutral? comment
-        = link_to vote_comment_path(comment, type: "up"), method: "post", class: "up", remote: true do
-          i.fa.fa-arrow-up.fa-1x
-      - else
-        = link_to vote_comment_path(comment, type: "down"), method: "post", class: "down", remote: true do
-          i.fa.fa-arrow-up.fa-1x
-    - else
-      = link_to vote_comment_path(comment, type: "up"), method: "post", class: "up" do
-        i.fa.fa-arrow-up.fa-1x
+    = render "votes/vote", votable: comment
       
   - if comment.comments.present?
     span.expand style="cursor:pointer"
@@ -24,9 +15,11 @@ li.comment id="show_comment_#{comment.id}"
     = pluralize comment.reputation_for(:votes).to_i, "vote"
   .entry = comment.body
   .action
-    span.reply = link_to_reply "Trả lời", comment
+    small.reply = link_to_reply "Trả lời", comment
     - if owner? comment.user
-      span.delete
+    small.delete
         = link_to "Xoá", comment_path(comment), method: :delete, data: { confirm: "Bạn có muốn xoá bình luận này không?" }
+    small.report
+        = render "reports/report", reportable: comment
   ul.sub-comments
     = render partial: 'comments/comment', collection: comment.comments

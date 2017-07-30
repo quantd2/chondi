@@ -15,7 +15,7 @@ class OptionsController < ApplicationController
     @option.add_or_update_evaluation(:votes, value, current_user)
     @option.touch
     respond_to do |format|
-      format.html { redirect_to :back, info: "Cám ơn bạn đã bầu chọn!" }
+      format.html { redirect_back fallback_location: :back, info: "Cám ơn bạn đã bầu chọn!" }
       format.js
     end
   end

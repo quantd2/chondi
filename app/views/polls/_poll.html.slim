@@ -2,6 +2,8 @@
   .poll-description
     h3 = link_to poll.name, poll_path(poll.id), target: "_blank"
     b.total Tổng phiếu bầu: #{poll.vote_count}
+    small.report
+      = render "reports/report", reportable: poll 
   .flexslider
     ul.slides
       - poll.options.each do |option|
