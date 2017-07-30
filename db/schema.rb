@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170727131846) do
+ActiveRecord::Schema.define(version: 20170730074443) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "body"
@@ -56,6 +56,15 @@ ActiveRecord::Schema.define(version: 20170727131846) do
     t.datetime "updated_at",             null: false
     t.integer  "vote_count", default: 0
     t.index ["user_id"], name: "index_polls_on_user_id"
+  end
+
+  create_table "reports", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "reportable_id"
+    t.string   "reportable_type"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["user_id"], name: "index_reports_on_user_id"
   end
 
   create_table "rs_evaluations", force: :cascade do |t|

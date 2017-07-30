@@ -19,7 +19,6 @@ module PollHelper
       end
       all_stats.push raw stats.to_s
     end
-    puts all_stats
     return all_stats
   end
 

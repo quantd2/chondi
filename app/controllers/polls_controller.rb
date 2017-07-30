@@ -29,6 +29,17 @@ class PollsController < ApplicationController
     redirect_to polls_url, notice: "Xoá nhóm chọn thành công."
   end
 
+  def report
+    value = params[:report] == "up" ? 1
+    @poll = Poll.find(poll[:id])
+    Report.create(user_id: current_user.id)
+    # @option.touch
+    respond_to do |format|
+      format.html { redirect_to :back, info: "Cám ơn bạn đã bầu chọn!" }
+      format.js
+    end
+  end
+
   private
 
   def correct_user

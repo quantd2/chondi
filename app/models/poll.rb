@@ -5,6 +5,7 @@ class Poll < ApplicationRecord
   has_many :options, dependent: :destroy
   belongs_to :user
   has_many :comments, as: :commentable, dependent: :destroy
+  has_many :reports, as: :reportable, dependent: :destroy
 
   accepts_nested_attributes_for :options, allow_destroy: true
 

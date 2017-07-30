@@ -6,29 +6,24 @@ class User < ApplicationRecord
 
   has_many :identities
   has_many :polls
-  # has_many :options
-  # has_many :polls, through: :options
   has_many :comments
+  has_many :reports
 
   has_reputation :votes, source: {reputation: :votes, of: :options}, aggregated_by: :sum
 
   validates :name, length: { maximum: 20 }, presence: true
 
-  # def vote_cache_key option
-  #   self.id.to_s + vote.updated_at.to_s
-  # end
+  def vote_cache_key option
+    'user_' + id.to_s + 'voted_for' + option.updated_at.to_s
+  end
 
   def is_neutral?(option)
-    Rails.cache.fetch('user_' + id.to_s + '_voted_for_' + option.updated_at.to_s) {
+    Rails.cache.fetch(vote_cache_key option) {
       return true unless option.evaluations.present?
       return true unless option.evaluations.where(source_id: self.id).present?
       option.evaluations.where(source_id: self.id).first.value == 0
     }
   end
-  #
-  # def voted_for?(poll)
-  #   Rails.cache.fetch('user_' + id.to_s + '_voted_for_' + poll.id.to_s) { options.any? {|v| v.poll == poll } }
-  # end
 
   def twitter
     identities.where( :provider => "twitter" ).first

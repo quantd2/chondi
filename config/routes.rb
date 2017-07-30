@@ -14,11 +14,13 @@ Rails.application.routes.draw do
   resources :polls do
     resources :comments
     resources :options
+    member { post :report }
   end
 
   resources :comments do
     resources :comments
     member { post :vote }
+    member { post :repot }
   end
 
   resources :options do
