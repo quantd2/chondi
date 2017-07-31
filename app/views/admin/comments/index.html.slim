@@ -1,0 +1,15 @@
+h3 All the comments
+ol.comments-list
+  table class="table table-striped"
+    thead
+      tr
+        th Comment content
+        th Report number
+        th Action
+    tbody
+    - @comments.each do |comment|
+      tr
+        td = link_to comment.body, poll_path(comment.poll_id)
+        td = comment.reports.size
+        td = link_to "Delete", comment_path(comment)
+= paginate @comments

@@ -11,7 +11,14 @@ header.navbar.navbar-default[role="navigation"]
         span.icon-bar
     .collapse.navbar-collapse.navbar-ex1-collapse.pull-right
       ul.nav.navbar-nav
+        li
+          = link_to "Về chọn đi", welcome_about_path
+        li
+          = link_to "Phản hồi", welcome_feedback_path
         - if signed_in?
+          - if admin?
+            li 
+              = link_to "admin", admin_path
           li
             / | tài khoản: 
             = link_to current_user.name, polls_path

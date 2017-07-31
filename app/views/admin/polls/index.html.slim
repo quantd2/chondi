@@ -1,0 +1,15 @@
+h3 All the comments
+ol.polls-list
+  table class="table table-striped"
+    thead
+      tr
+        th Poll name
+        th Report number
+        th Action
+    tbody
+    - @polls.each do |poll|
+      tr
+        td = link_to poll.name, poll_path(poll)
+        td = poll.reports.size
+        td = link_to "Delete", poll_path(poll)
+= paginate @polls

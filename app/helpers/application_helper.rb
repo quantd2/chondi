@@ -36,5 +36,9 @@ module ApplicationHelper
   def path_send *arg
     Rails.application.routes.url_helpers.send *arg
   end
+
+  def admin?
+    current_user.admin ? true : false
+  end
 end
 #

@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
   get 'welcome/index'
+  get 'welcome/about'
+  get 'welcome/feedback'
 
   devise_for :users, class_name: 'FormUser',
              :controllers => { omniauth_callbacks: 'omniauth_callbacks',
@@ -32,6 +34,7 @@ Rails.application.routes.draw do
     # get 'dashboard/index'
     get '', to: 'dashboard#index', as: '/'
     resources :polls
+    resources :comments
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

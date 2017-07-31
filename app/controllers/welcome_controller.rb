@@ -4,4 +4,12 @@ class WelcomeController < ApplicationController
   def index
     @polls = Poll.all.includes(:options).desc.page params[:page]
   end
+
+  def about
+    
+  end
+
+  def feedback
+
+  end
 end

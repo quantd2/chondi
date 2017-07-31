@@ -1,9 +1,12 @@
-class CommentsController < ApplicationController
-  before_action :find_commentable, :authenticate_user!
-  before_action :correct_user, only: :destroy
+class Admin::CommentsController < ApplicationController
+  before_action :find_commentable, :authenticate_user!, :admin?
+
+  def index
+    @comments = Comment.all.includes(:commentable).page params[:page]
+  end
 
   def create
-    @comment = @commentable.comments.new comment_params.merge(user_id: current_user.id, poll_id: @poll_id)
+    @comment = @commentable.comments.new comment_params.merge(user_id: current_user.id)
     respond_to do |format|
       if @comment.save
         format.html { redirect_back fallback_location: :back, info: "Cám ơn bạn đã tham gia bình luận!" }
@@ -34,17 +37,12 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:body)
+    params.require(:comment).permit(:body, :user_id)
   end
 
   def find_commentable
-    if params[:comment_id]
-      @commentable = Comment.find_by_id(params[:comment_id])
-      @poll_id = @commentable.poll_id
-    elsif params[:poll_id]
-      @commentable = Poll.find_by_id(params[:poll_id])
-      @poll_id = @commentable.id
-    end
+    @commentable = Comment.find_by_id(params[:comment_id]) if params[:comment_id]
+    @commentable = Poll.find_by_id(params[:poll_id]) if params[:poll_id]
   end
 
   def correct_user
