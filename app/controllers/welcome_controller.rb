@@ -6,10 +6,8 @@ class WelcomeController < ApplicationController
   end
 
   def about
-    
   end
 
   def feedback
-
   end
 end
