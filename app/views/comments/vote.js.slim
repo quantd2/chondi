@@ -10,4 +10,4 @@
   | $down.attr('href','/comments/#{params[:id]}/vote?type=up');
   | $down.attr('class','up');
 
-| $number.text("#{pluralize @comment.reputation_for(:votes).to_i, "vote"}");
+| $number.text("#{@comment.reputation_for(:votes).to_i} phiếu");

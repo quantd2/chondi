@@ -8,7 +8,7 @@
         - @poll.errors.full_messages.each do |msg|
           li
             = msg
-  = f.input :name, label: "Tên nhóm lựa chọn", validate: true
+  = f.input :name, label: false, placeholder: "Tên nhóm lựa chọn", validate: true
   - 2.times do
     = f.simple_fields_for :options, Option.new do |builder|
       = render 'option_fields', f: builder

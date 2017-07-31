@@ -1,6 +1,7 @@
 .option-name = option_name_display option.name
 .vote
   .number
-    = pluralize option.reputation_for(:votes).to_i, "vote"
+    = option.reputation_for(:votes).to_i
+    |  phiếu
   .action
     = render "votes/vote", votable: option

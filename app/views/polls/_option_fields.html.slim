@@ -1,6 +1,6 @@
 .col-sm-6.option-fields
   fieldset
-    = f.input :name, label: "tên lựa chọn"
+    = f.input :name, label: false, placeholder: "Tên lựa chọn"
     = f.file_field :image
     
   = link_to "Bỏ lựa chọn", '#', class: "remove_fields btn btn-danger input-button"

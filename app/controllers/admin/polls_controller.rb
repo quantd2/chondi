@@ -2,7 +2,7 @@ class Admin::PollsController < ApplicationController
   before_action :authenticate_user!, :admin?
 
   def index
-    @polls = Poll.all.includes(:options).page params[:page]
+    @polls = Poll.all.includes(:reports).page params[:page]
   end
 
   def show

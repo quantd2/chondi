@@ -9,7 +9,7 @@ class Poll < ApplicationRecord
 
   accepts_nested_attributes_for :options, allow_destroy: true
 
-  validates :name, presence: true, length: { maximum: 50 }
+  validates :name, presence: true, length: { maximum: 100 }
 
   scope :desc, -> { order(created_at: :desc) }
   scope :hot, -> { order(vote_count: :desc) }

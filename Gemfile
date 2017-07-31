@@ -57,6 +57,7 @@ gem 'activerecord-reputation-system'
 gem 'flexslider'
 gem 'actionpack-page_caching'
 gem 'actionpack-action_caching'
+gem 'mail_form'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

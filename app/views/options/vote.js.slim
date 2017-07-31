@@ -14,7 +14,7 @@
   | $down.attr('href','/options/#{params[:id]}/vote?type=up');
   | $down.attr('class','up');
 
-| $number.text("#{pluralize @option.reputation_for(:votes).to_i, "vote"}");
+| $number.text("#{@option.reputation_for(:votes).to_i} phiếu");
 | $total.text("Tổng phiếu bầu: #{@option.poll.votes_summary}");
 | $allStats.each(function(index){
 |     $(this).html(allStatsContent[index]);

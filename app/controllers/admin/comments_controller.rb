@@ -2,7 +2,7 @@ class Admin::CommentsController < ApplicationController
   before_action :find_commentable, :authenticate_user!, :admin?
 
   def index
-    @comments = Comment.all.includes(:commentable).page params[:page]
+    @comments = Comment.all.includes(:commentable, :reports).page params[:page]
   end
 
   def create
