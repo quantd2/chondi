@@ -17,7 +17,10 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment.destroy
-    redirect_to :back, notice: "Xoá lời bình thành công."
+    respond_to do |format|
+      format.html { redirect_back fallback_location: :back, notice: "Xoá lời bình thành công." }
+      format.js
+    end
   end
 
   def vote

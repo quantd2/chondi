@@ -1,26 +1,66 @@
-li.comment id="show_comment_#{comment.id}"
-  span.action.vote
-    = render "votes/vote", votable: comment
-      
-  - if comment.comments.present?
-    span.expand style="cursor:pointer"
-      | [-] 
-  b.author 
-    = comment.author.name
-  small.time
-    |  gửi  
-    = time_ago_in_words(comment.created_at) 
-    |  trước
-  small.number
-    = comment.reputation_for(:votes).to_i
-    |  phiếu
-  .entry = comment.body
-  .action
-    small.reply = link_to_reply "Trả lời", comment
-    - if owner? comment.user
-    small.delete
-        = link_to "Xoá", comment_path(comment), method: :delete, data: { confirm: "Bạn có muốn xoá bình luận này không?" }
-    small.report
-        = render "reports/report", reportable: comment
+li
+  media id="show_comment_#{comment.id}"
+    .media-left
+      = image_tag comment.user.image.thumb.url, class: "media-object"
+    .media-body
+      .media-heading
+        - if comment.comments.present?
+          span.expand style="cursor:pointer"
+            | [-] 
+        b.author 
+          = comment.author.name
+        small.time
+          |  gửi  
+          = time_ago_in_words(comment.created_at) 
+          |  trước
+        small.number
+          = comment.reputation_for(:votes).to_i
+          |  phiếu
+      span.action.vote
+        = render "votes/vote", votable: comment
+      .entry = comment.body
+      .action
+        small.reply = link_to_reply "Trả lời", comment
+        - if owner? comment.user
+          small.delete
+            = link_to "Xoá", "#{}", class: "intent"
+            span.confirmation
+              | Bạn có chắc không? 
+              = link_to "Có", comment_path(comment), class: "confirm", method: :delete, remote: true
+              = link_to "Không", "#{}", class: "cancel"
+        small.report
+            = render "reports/report", reportable: comment
+            
   ul.sub-comments
     = render partial: 'comments/comment', collection: comment.comments
+
+/ li.comment id="show_comment_#{comment.id}"
+/   span.action.vote
+/     = render "votes/vote", votable: comment
+/       
+/   - if comment.comments.present?
+/     span.expand style="cursor:pointer"
+/       | [-] 
+/   b.author 
+/     = comment.author.name
+/   small.time
+/     |  gửi  
+/     = time_ago_in_words(comment.created_at) 
+/     |  trước
+/   small.number
+/     = comment.reputation_for(:votes).to_i
+/     |  phiếu
+/   .entry = comment.body
+/   .action
+/     small.reply = link_to_reply "Trả lời", comment
+/     - if owner? comment.user
+/       small.delete
+/         = link_to "Xoá", "#{}", class: "intent"
+/         span.confirmation
+/           | Bạn có chắc không? 
+/           = link_to "Có", comment_path(comment), class: "confirm", method: :delete, remote: true
+/           = link_to "Không", "#{}", class: "cancel"
+/     small.report
+/         = render "reports/report", reportable: comment
+/   ul.sub-comments
+/     = render partial: 'comments/comment', collection: comment.comments

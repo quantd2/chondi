@@ -11,7 +11,10 @@ class User < ApplicationRecord
 
   has_reputation :votes, source: {reputation: :votes, of: :options}, aggregated_by: :sum
 
-  validates :name, length: { maximum: 20 }, presence: true
+  validates :name, length: { maximum: 20 }, presence: true, uniqueness: true
+  validates :email, :password, presence: true
+
+  mount_uploader :image, ImageUploader
 
   def vote_cache_key votable
     'user_' + id.to_s + 'voted_for' + votable.updated_at.to_s

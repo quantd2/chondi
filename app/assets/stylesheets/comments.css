@@ -1,0 +1,45 @@
+.time {
+  color: gray;
+}
+
+#new_comment .btn {
+  margin-top: 0px;
+}
+
+.cancel {
+  margin-left: 1em;
+}
+
+small.delete, small.number {
+  margin-left: 1em;
+}
+
+.confirmation {
+  display: none;
+}
+
+.media-body {
+  position: relative;
+}
+
+.stats {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 0;
+  width: 100%;
+  height: 20px;
+}
+
+.media-heading div {
+  text-align: left;
+}
+
+li.comment {
+  position: relative;
+}
+
+.action.vote {
+  position: absolute;
+  left: -1.53em;
+  top: 1.4em;
+}
