@@ -4,10 +4,10 @@ class User < ApplicationRecord
   devise :omniauthable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable
 
-  has_many :identities
-  has_many :polls
-  has_many :comments
-  has_many :reports
+  has_many :identities, dependent: :destroy
+  has_many :polls, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :reports, dependent: :destroy
 
   has_reputation :votes, source: {reputation: :votes, of: :options}, aggregated_by: :sum
 
