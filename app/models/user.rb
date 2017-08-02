@@ -11,7 +11,7 @@ class User < ApplicationRecord
 
   has_reputation :votes, source: {reputation: :votes, of: :options}, aggregated_by: :sum
 
-  validates :name, length: { maximum: 20 }, presence: true, uniqueness: true
+  validates :name, length: { maximum: 20 }, presence: true
   validates :email, :password, presence: true
 
   mount_uploader :image, ImageUploader

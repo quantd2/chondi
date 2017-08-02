@@ -1,3 +1,21 @@
+[class="comment-list"] {
+  padding-left: 0px;
+}
+
+.comment-list {
+  list-style-type: none;
+}
+
+.expand {
+  color: #337ab7;
+  cursor: pointer;
+}
+
+[id^="show_comment"] img {
+  width: 48px;
+  height: 52px;
+}
+
 .time {
   color: gray;
 }
@@ -22,14 +40,6 @@ small.delete, small.number {
   position: relative;
 }
 
-.stats {
-  position: absolute;
-  bottom: 0;
-  margin-bottom: 0;
-  width: 100%;
-  height: 20px;
-}
-
 .media-heading div {
   text-align: left;
 }
@@ -38,8 +48,7 @@ li.comment {
   position: relative;
 }
 
-.action.vote {
-  position: absolute;
-  left: -1.53em;
-  top: 1.4em;
+.comment-list .action.vote {
+  position: static;
+  margin-left: 1em;
 }

@@ -3,5 +3,6 @@ h3
 = simple_form_for [@poll, Comment.new], html: { id: @poll.normalized_id }, remote: signed_in?, validate: true do |f|
   = f.input :body, placeholder: "Để lại lời bình", label: false, validate: true
   = f.button :submit, value: "Gửi"
-ul
+hr
+ul.comment-list
   = render(partial: 'comments/comment', collection: @comments)

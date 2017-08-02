@@ -19,30 +19,6 @@ addOption = ($el) ->
   event.preventDefault()
   return
 
-addComment = ($el) ->
-  $this = $el
-  $data = $this.data('fields')
-
-  $this.before($data)
-  $this.hide()
-  event.preventDefault()
-  return
-
-cancelComment = ($el) ->
-  $this = $el
-  $addComment = $this.closest('.reply').find('.add_comment')
-  $commentForm = $this.closest('.reply').find('form')
-
-  $addComment.show()
-  $commentForm.remove()
-  event.preventDefault()
-  return
-
-refreshStats = (item, index, $el) ->
-  updatedStats = visualize_votes_for(item)
-  $el(index).html(updatedStats);
-  return
-
 
 ready = ->
   $('form').on 'click', '.remove_fields', (event) ->
@@ -54,13 +30,25 @@ ready = ->
     addOption($(this))
     return
 
-  $('.reply').on 'click', '.add_comment', (event) ->
-    addComment($(this))
+  $("form").on 'change', "[type=file]", ->
+    if typeof FileReader != 'undefined'
+      image_holder = $(this).closest('fieldset').find('#previewImage')
+      image_holder.empty()
+      reader = new FileReader
+      console.log($(this))
+      reader.onload = (e) ->
+        $('<img />',
+          'src': e.target.result
+          'class': 'thumb-image').appendTo image_holder
+        console.log($(this))
+        return
+
+      image_holder.show()
+      reader.readAsDataURL $(this)[0].files[0]
+    else
+      alert 'This browser does not support FileReader.'
     return
 
-  $('.reply').on 'click', '.cancel', (event) ->
-    cancelComment($(this))
-    return
 
   return
 

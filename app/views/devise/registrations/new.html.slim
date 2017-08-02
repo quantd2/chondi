@@ -7,7 +7,6 @@ h2 Đăng ký
   = f.input :name, label: false, placeholder: "tên", autofocus: true, placeholder: "Anonymous"
   = f.input :email, label: false, placeholder: "Hộp Thư", autofocus: true
   = f.input :password, label: false, placeholder: "Mật Khẩu", autocomplete: "off"
-  = f.file_field :image
   - if @minimum_password_length
     em
       | (

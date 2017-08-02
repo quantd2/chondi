@@ -1,16 +1,42 @@
 .option-fields {
-  height: 11.5em;
+  height: 11em;
 }
 
-.new_poll input[name="commit"] {
-  margin-top: 2em;
+[type="file"] {
+  position: absolute;
+  top: 0px;
+  right: -187px;
+  height: 50px;
+}
+
+.new_poll input[name="commit"], .add_fields.btn {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
 }
 
 .add_fields.btn {
-  margin-right: 0.5em;
-  margin-top: 2em;
+  margin-left: 8em;
 }
 
 .remove_fields {
-  margin-top: 0.5em;
+  margin-top: 0em;
+}
+
+#previewImage img {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  right: 20px;
+  top: 2px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+
+.fa-picture-o {
+  position: absolute;
+  right: 22px;
+  top: 5px;
+  z-index: 1;
 }

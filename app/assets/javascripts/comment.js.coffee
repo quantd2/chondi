@@ -12,7 +12,51 @@ toggle = ($exp, $col) ->
   if $exp.text() == "[-] " then $exp.text('[+] ') else $exp.text('[-] ')
   return
 
+addComment = ($el) ->
+  $this = $el
+  $data = $this.data('fields')
+
+  $this.before($data)
+  $this.hide()
+  event.preventDefault()
+  return
+
+cancelComment = ($el) ->
+  $this = $el
+  $addComment = $this.closest('.reply').find('.add_comment')
+  $commentForm = $this.closest('.reply').find('form')
+
+  $addComment.show()
+  $commentForm.remove()
+  event.preventDefault()
+  return
+
+refreshStats = (item, index, $el) ->
+  updatedStats = visualize_votes_for(item)
+  $el(index).html(updatedStats);
+  return
+
+deleteCommentQuestion = ($el) ->
+  $el.next().show()
+  $el.hide()
+  return
+
+deleteCommentCancel = ($el) ->
+  $el.closest(".confirmation").hide();
+  $el.closest(".delete").find(".intent").show();
+  return
+
+
 ready = ->
+
+  $('.reply').on 'click', '.add_comment', (event) ->
+    addComment($(this))
+    return
+
+  $('.reply').on 'click', '.cancel', (event) ->
+    cancelComment($(this))
+    return
+
   $li = $('li')
   $li.each (i) ->
     flexComment($(this))
@@ -28,15 +72,12 @@ ready = ->
 
   $('.delete').on 'click', '.intent', (event) ->
     event.preventDefault();
-    $(this).next().show();
-    $(this).hide();
+    deleteCommentQuestion($(this))
     return
 
   $('.delete').on 'click', '.cancel', (event) ->
     event.preventDefault();
-    $(this).closest(".confirmation").hide();
-    console.log($(this));
-    $(this).closest(".delete").find(".intent").show();
+    deleteCommentCancel($(this))
     return
 
   return
