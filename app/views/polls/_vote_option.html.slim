@@ -1,6 +1,7 @@
 .media id="option_#{option.id}"
   .media-left
-    = image_tag option.image.thumb.url, class: "media-object"
+    = link_to option.image.large.url, 'data-fancybox': "gallery", class: 'media-object fancybox' do
+      = image_tag(option.image.thumb.url)
   .media-body
     .media-heading 
       = render "options/option_details", option: option, layout: "poll_details"

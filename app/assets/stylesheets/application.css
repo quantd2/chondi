@@ -15,6 +15,7 @@
  *= require bootstrap-sass-official
  *= require components-font-awesome
  *= require flexslider.css
+ *= require fancybox
  *= require_tree .
  *= require_self
  */

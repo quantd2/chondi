@@ -1,5 +1,3 @@
-= link_to "Các nhóm chọn của #{@user.name}", user_polls_path(user_id: @user.id)
-hr
 h3 Các lời bình của #{@user.name}
 ol.comment-list
   - @comments.each do |comment|

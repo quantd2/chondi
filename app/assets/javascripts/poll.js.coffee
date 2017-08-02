@@ -50,6 +50,14 @@ ready = ->
     return
 
 
+  # $("a.fancybox").fancybox()
+  #   openEffect	: 'none'
+	# 	closeEffect	: 'none'
+  #   # closeBtn: false
+  #   # helpers:
+  #   #   title: type: 'inside'
+  #   #   buttons: {}
+  #   # return
   return
 
 $(document).on 'turbolinks:load', ready

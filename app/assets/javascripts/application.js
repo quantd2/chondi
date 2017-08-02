@@ -17,4 +17,12 @@
 //= require rails.validations
 //= require rails.validations.simple_form
 //= require jquery.flexslider-min
+//= require fancybox
 //= require_tree .
+
+
+$(document).ready(function() {
+	$(".fancybox").fancybox({
+
+	});
+});;

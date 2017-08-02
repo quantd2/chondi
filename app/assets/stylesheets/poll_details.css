@@ -19,3 +19,8 @@
   left: -1.53em;
   top: 1.4em;
 }
+
+.media .vote {
+  bottom: 1.5em;
+  position: absolute;
+}
