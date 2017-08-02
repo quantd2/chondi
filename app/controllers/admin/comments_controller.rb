@@ -19,8 +19,9 @@ class Admin::CommentsController < ApplicationController
   end
 
   def destroy
+    @comment = Comment.find_by_id(params[:id])
     @comment.destroy
-    redirect_to :back, notice: "Xoá lời bình thành công."
+    redirect_back fallback_location: :back, notice: "Xoá lời bình thành công."
   end
 
   def vote
@@ -43,10 +44,5 @@ class Admin::CommentsController < ApplicationController
   def find_commentable
     @commentable = Comment.find_by_id(params[:comment_id]) if params[:comment_id]
     @commentable = Poll.find_by_id(params[:poll_id]) if params[:poll_id]
-  end
-
-  def correct_user
-    @comment = current_user.comments.find_by_id(params[:id])
-    redirect_to root_path if @comment.nil?
   end
 end

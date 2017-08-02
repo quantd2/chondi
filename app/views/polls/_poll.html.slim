@@ -7,4 +7,4 @@
   .flexslider
     ul.slides
       - poll.options.each do |option|
-        = render "options/option", option: option, cached: true
+        = render option, cached: true

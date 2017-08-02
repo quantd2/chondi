@@ -1,7 +1,10 @@
-h3 Nhóm chọn của bạn
-ol.polls-list
+
+= link_to "Cac loi binh cua #{@user.name}", user_comments_path(user_id: @user.id)
+hr
+h3 Nhóm chọn của #{@user.name}
+ol.poll-list
   - @polls.each do |poll|
     - cache_if current_user, poll do
       = render "polls/poll", poll: poll
-      
+
 = paginate @polls

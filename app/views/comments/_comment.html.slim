@@ -8,11 +8,15 @@ li
           span.expand
             | [-] 
         b.author 
-          = comment.author.name
+          = link_to comment.author.name, user_polls_path(user_id: comment.author.id)
         small.time
           |  gửi  
           = time_ago_in_words(comment.created_at) 
           |  trước
+        - if comment_poll_name_display?
+          small.poll
+            |  ở 
+            = link_to Poll.find_by_id(comment.poll_id).name, poll_path(Poll.find_by_id(comment.poll_id))
         small.number
           = comment.reputation_for(:votes).to_i
           |  phiếu

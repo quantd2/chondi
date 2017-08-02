@@ -1,6 +1,11 @@
 class CommentsController < ApplicationController
-  before_action :find_commentable, :authenticate_user!
+  before_action :find_commentable, :authenticate_user!, except: [:show, :index]
   before_action :correct_user, only: :destroy
+  before_action :find_owner, only: :index
+
+  def index
+    @comments = @user.comments.page params[:page]
+  end
 
   def create
     @comment = @commentable.comments.new comment_params.merge(user_id: current_user.id, poll_id: @poll_id)
@@ -53,5 +58,13 @@ class CommentsController < ApplicationController
   def correct_user
     @comment = current_user.comments.find_by_id(params[:id])
     redirect_to root_path if @comment.nil?
+  end
+
+  def find_owner
+    @user = User.find(user_params)
+  end
+
+  def user_params
+    params.require(:user_id)
   end
 end

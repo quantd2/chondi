@@ -24,16 +24,12 @@ class Admin::PollsController < ApplicationController
   end
 
   def destroy
+    @poll = Poll.find_by_id(params[:id])
     @poll.destroy
-    redirect_to polls_url, notice: "Xoá nhóm chọn thành công."
+    redirect_back fallback_location: :back, notice: "Xoá nhóm chọn thành công."
   end
 
   private
-
-  def correct_user
-    @poll = current_user.polls.find_by_id(params[:id])
-    redirect_to root_path if @poll.nil?
-  end
 
   def poll_params
     params.require(:poll).permit(:name, :user_id, options_attributes: [:name, :image, :remote_image_url, :_destroy])

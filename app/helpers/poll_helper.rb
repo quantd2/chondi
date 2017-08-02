@@ -25,4 +25,8 @@ module PollHelper
   def option_name_display name
     request.path_info.include?("poll") ? name : truncate(name, length: 20)
   end
+
+  def comment_poll_name_display?
+    request.path_info.include?("user") and request.path_info.include?("comments")
+  end
 end

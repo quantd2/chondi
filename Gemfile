@@ -36,13 +36,14 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'devise'
 gem 'omniauth'
-gem 'omniauth-twitter'
+
 gem 'omniauth-facebook'
-gem 'omniauth-instagram'
-gem 'twitter'
-gem 'instagram'
-gem 'omniauth-google-oauth2'
-gem 'google-api-client'
+# gem 'omniauth-twitter'
+# gem 'omniauth-instagram'
+# gem 'twitter'
+# gem 'instagram'
+# gem 'omniauth-google-oauth2'
+# gem 'google-api-client'
 
 gem 'bower-rails'
 gem 'simple_form'
@@ -58,6 +59,7 @@ gem 'flexslider'
 gem 'actionpack-page_caching'
 gem 'actionpack-action_caching'
 gem 'mail_form'
+gem 'fog'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -74,6 +76,11 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'bullet'
+end
+
+group :production do
+  gem 'unicorn'
+  gem 'pg'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

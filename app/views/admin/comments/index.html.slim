@@ -9,7 +9,7 @@ ol.comments-list
     tbody
     - @comments.each do |comment|
       tr
-        td = link_to comment.body, poll_path(comment.poll_id)
+        td = link_to comment.body, poll_path(comment.poll_id, anchor: "show_comment_#{comment.id}")
         td = comment.reports.size
-        td = link_to "Delete", comment_path(comment)
+        td = link_to "Delete", admin_comment_path(comment), method: :delete, data: { confirm: "Bạn có muốn xoá '#{comment.body}' không?" }
 = paginate @comments

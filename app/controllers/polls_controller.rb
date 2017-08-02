@@ -1,14 +1,16 @@
 class PollsController < ApplicationController
-  before_action :authenticate_user!, except: :show
+  before_action :authenticate_user!, except: [:show, :index]
   before_action :correct_user, only: :destroy
+  before_action :find_owner, only: :index
 
   def index
-    @polls = current_user.polls.page params[:page]
+    # @polls = current_user.polls.page params[:page]
+    @polls = @user.polls.page params[:page]
   end
 
   def show
     @poll = Poll.includes(:options, :comments).find_by_id(params[:id])
-    @comments = @poll.comments.page params[:page]
+    @comments = @poll.comments
   end
 
   def new
@@ -31,12 +33,20 @@ class PollsController < ApplicationController
 
   private
 
+  def find_owner
+    @user = User.find(user_params)
+  end
+
   def correct_user
     @poll = current_user.polls.find_by_id(params[:id])
     redirect_to root_path if @poll.nil?
   end
 
   def poll_params
-    params.require(:poll).permit(:name, :user_id, options_attributes: [:name, :image, :remote_image_url, :_destroy])
+    params.require(:poll).permit(:name, options_attributes: [:name, :image, :remote_image_url, :_destroy])
+  end
+
+  def user_params
+    params.require(:user_id)
   end
 end

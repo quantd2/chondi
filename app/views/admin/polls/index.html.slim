@@ -11,5 +11,5 @@ ol.polls-list
       tr
         td = link_to poll.name, poll_path(poll)
         td = poll.reports.size
-        td = link_to "Delete", poll_path(poll)
+        td = link_to "Delete", admin_poll_path(poll), method: :delete, data: { confirm: "Bạn có muốn xoá nhóm '#{poll.name}' không?" } 
 = paginate @polls
