@@ -28,7 +28,7 @@ production:
   adapter: postgresql
   encoding: unicode
   host: localhost
-  database: ENV['DBNAME']
+  database: chondi
   pool: 5
-  username: ENV['DBUSERNAME']
-  password: ENV['DBPASS']
+  username: chondi
+  password: chondi
