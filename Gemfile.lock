@@ -469,6 +469,7 @@ DEPENDENCIES
   listen (~> 3.0.5)
   mail_form
   mini_magick
+  nokogiri
   omniauth
   omniauth-facebook
   pg
