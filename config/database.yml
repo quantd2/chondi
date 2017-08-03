@@ -19,15 +19,15 @@ development:
 test:
   <<: *default
   database: db/test.sqlite3
-
-production:
-  <<: *default
-  database: db/production.sqlite3
+#
+# production:
+#   <<: *default
+#   database: db/production.sqlite3
 
 production:
   adapter: postgresql
   encoding: utf8
-  database: chondi
+  database: ENV['DBNAME']
   pool: 5
-  username:
-  password:
+  username: ENV['DBUSERNAME']
+  password: ENV['DBPASS']
