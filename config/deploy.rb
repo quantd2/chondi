@@ -3,7 +3,7 @@ server '128.199.246.201', port: 22, roles: [:web, :app, :db], primary: true
 
 set :repo_url,        'git@github.com:quantd2/chondi.git'
 set :application,     'chondi'
-set :user,            'chondi'
+set :user,            'root'
 set :puma_threads,    [4, 16]
 set :puma_workers,    0
 
