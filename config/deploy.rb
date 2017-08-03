@@ -1,5 +1,5 @@
 # Change these
-server '128.199.246.201', port: 3333, roles: [:web, :app, :db], primary: true
+server '128.199.246.201', port: 22, roles: [:web, :app, :db], primary: true
 
 set :repo_url,        'git@github.com:quantd2/chondi.git'
 set :application,     'chondi'
