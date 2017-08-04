@@ -4,8 +4,8 @@ h2
 = render "devise/shared/social_links"
 
 = simple_form_for(resource, as: resource_name, url: session_path(resource_name), validate: true) do |f|
-  = f.input :email, label: false, placeholder: "Hộp Thư"
-  = f.input :password, label: false, placeholder:  "Mật Khẩu"
-  = f.input :remember_me, label: "Lưu Tài Khoản", as: :boolean
-  = f.button :submit, "Đăng Nhập"
+  = f.input :email, label: false, placeholder: "Hộp thư"
+  = f.input :password, label: false, placeholder:  "Mật khẩu"
+  = f.input :remember_me, label: "Lưu tài khoản", as: :boolean
+  = f.button :submit, "Đăng nhập"
 = render "devise/shared/links"

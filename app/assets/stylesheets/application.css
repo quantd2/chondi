@@ -13,7 +13,7 @@
  *
  *= require bootstrap-social
  *= require bootstrap-sass-official
- *= require components-font-awesome
+ *= require font-awesome
  *= require flexslider.css
  *= require fancybox
  *= require_tree .

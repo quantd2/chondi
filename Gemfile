@@ -60,8 +60,7 @@ gem 'actionpack-page_caching'
 gem 'actionpack-action_caching'
 gem 'mail_form'
 gem 'fog'
-gem 'nokogiri'
-
+gem 'font-awesome-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -86,7 +85,6 @@ group :development do
 end
 
 group :production do
-  # gem 'unicorn'
   gem 'pg'
 end
 

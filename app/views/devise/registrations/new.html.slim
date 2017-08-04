@@ -4,14 +4,14 @@ h2 Đăng ký
 
 = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), validate: true) do |f|
   = devise_error_messages!
-  = f.input :name, label: false, placeholder: "tên", autofocus: true, placeholder: "Anonymous"
-  = f.input :email, label: false, placeholder: "Hộp Thư", autofocus: true
-  = f.input :password, label: false, placeholder: "Mật Khẩu", autocomplete: "off"
+  = f.input :name, label: false, placeholder: "Tên", autofocus: true
+  = f.input :email, label: false, placeholder: "Hộp thư", autofocus: true
+  = f.input :password, label: false, placeholder: "Mật khẩu", autocomplete: "off"
   - if @minimum_password_length
     em
       | (
       = @minimum_password_length
       |  ký tự tối thiểu)
   br
-  = f.button :submit, "Tạo Tài Khoản"
+  = f.button :submit, "Tạo tài khoản"
 = render "devise/shared/links"
