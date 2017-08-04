@@ -17,8 +17,6 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def generic_callback( provider )
     @identity = Identity.find_for_oauth env["omniauth.auth"]
-    omniauth = request.env["omniauth.auth"]
-    session[:fb_token] = omniauth["credentials"]["token"] if omniauth['provider'] == 'facebook'
 
     @user = @identity.user || current_user
     if @user.nil?
