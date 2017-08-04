@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     get '/users/auth/:provider/setup', :to => 'omniauth_callbacks#setup'
   end
 
+  match '/auth/facebook/logout' => 'application#facebook_logout', :as => :facebook_logout, via: :post
+
   resources :polls do
     resources :comments
     resources :options
