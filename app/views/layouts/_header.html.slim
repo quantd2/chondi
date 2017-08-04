@@ -31,10 +31,10 @@ header.navbar.navbar-inverse[role="navigation"]
                    = link_to "Các bình luận của tôi", user_comments_path(user_id: current_user.id)
                 li class="divider"
           li
-            - if session[:fb_token].nil? 
-              = link_to "Thoát", destroy_user_session_path, method: :delete
-            - else
-              = link_to "Thoát", facebook_logout_path
+            / - if session[:fb_token].nil? 
+            = link_to "Thoát", destroy_user_session_path, method: :delete
+            / - else
+              / = link_to "Thoát", facebook_logout_path, method: :get
         - else
           li
             = link_to "Đăng ký", new_user_registration_path

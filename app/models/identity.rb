@@ -15,6 +15,7 @@ class Identity < ApplicationRecord
     identity.phone = auth.info.phone
     identity.urls = (auth.info.urls || "").to_json
     identity.save
+    puts auth
     identity
   end
 end
