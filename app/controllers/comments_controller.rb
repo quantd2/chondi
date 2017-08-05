@@ -32,7 +32,7 @@ class CommentsController < ApplicationController
     value = params[:type] == "up" ? 1 : 0
     @comment = Comment.find(params[:id])
     @comment.add_or_update_evaluation(:votes, value, current_user)
-    # @commnet.touch
+    @comment.touch
     respond_to do |format|
       format.html { redirect_to :back, info: "Cám ơn bạn đã bầu chọn!" }
       format.js

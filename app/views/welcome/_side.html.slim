@@ -5,4 +5,5 @@ h4
   | Nhóm được bầu nhiều nhất
 ol.hot-polls-list
   - hot_polls.each do |poll|
-    = render "welcome/hot_poll", poll: poll
+    - cache poll do
+      = render "welcome/hot_poll", poll: poll

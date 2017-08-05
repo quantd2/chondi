@@ -4,4 +4,4 @@
     = option.reputation_for(:votes).to_i
     |  phiếu
   .action
-    = render "votes/vote", votable: option
+    = render "votes/vote", votable: option, cached: true

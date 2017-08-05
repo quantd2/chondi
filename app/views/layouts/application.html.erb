@@ -29,7 +29,7 @@
           <%= render "welcome/side" %>
         </div>
       </div>
-      <%= render 'layouts/footer' %>
+      <%= render 'layouts/footer', cache: true %>
       <%= debug(params) if Rails.env.development? %>
     </div>
   </body>

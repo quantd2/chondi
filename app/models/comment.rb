@@ -1,7 +1,7 @@
 class Comment < ApplicationRecord
   include Common
 
-  belongs_to :commentable, polymorphic: true
+  belongs_to :commentable, polymorphic: true, touch: true
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :reports, as: :reportable, dependent: :destroy
   belongs_to :user

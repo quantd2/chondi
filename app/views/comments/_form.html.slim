@@ -5,4 +5,4 @@ h3
   = f.button :submit, value: "Gửi", class: "btn-success"
 hr
 ul.comment-list
-  = render(partial: 'comments/comment', collection: @comments)
+  = render partial: 'comments/comment', collection: @comments
