@@ -19,8 +19,12 @@ class PollsController < ApplicationController
 
   def create
     @poll = current_user.polls.build(poll_params)
-    if @poll.save and @poll.options.size.between? 2, 5
-      redirect_to url_for(:controller => :welcome, :action => :index), notice: "Tạo thành công nhóm chọn."
+    if @poll.options.size.between? 2, 5
+      if @poll.save and
+        redirect_to url_for(:controller => :welcome, :action => :index), notice: "Tạo thành công nhóm chọn."
+      else
+        redirect_to new_poll_path, alert: "Vui lòng thử lại sau."
+      end
     else
       redirect_to new_poll_path, alert: "Bạn chỉ được có 2-5 lựa chọn"
     end
