@@ -68,11 +68,11 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
   # SMTP settings for gmail
   config.action_mailer.smtp_settings = {
-   :address              => "smtp.gmail.com",
-   :domain               => "gmail.com",
+   :address              => "smtp.migadu.com",
+   :domain               => "migadu.com",
    :port                 => 587,
-   :user_name            => ENV['GMAIL_USERNAME'],
-   :password             => ENV['GMAIL_PASS'],
+   :user_name            => ENV['MIGADU_USERNAME'],
+   :password             => ENV['MIGADU_PASS'],
    :authentication       => "plain",
    :enable_starttls_auto => true
   }
