@@ -79,6 +79,10 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
+    carrierwave_direct (0.0.15)
+      carrierwave
+      fog
+      uuidtools
     client_side_validations (9.3.3)
       jquery-rails (~> 4.3)
       js_regex (~> 1.2)
@@ -433,6 +437,7 @@ GEM
     uglifier (3.2.0)
       execjs (>= 0.3.0, < 3)
     uniform_notifier (1.10.0)
+    uuidtools (2.1.5)
     warden (1.2.7)
       rack (>= 1.0)
     web-console (3.5.1)
@@ -462,6 +467,7 @@ DEPENDENCIES
   capistrano-rvm
   capistrano3-puma
   carrierwave
+  carrierwave_direct
   client_side_validations
   client_side_validations-simple_form
   coffee-rails (~> 4.2)
