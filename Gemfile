@@ -61,6 +61,8 @@ gem 'actionpack-action_caching'
 gem 'mail_form'
 gem 'fog'
 gem 'font-awesome-rails'
+gem 'sidekiq'
+gem 'carrierwave_direct'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
