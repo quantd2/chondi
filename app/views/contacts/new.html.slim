@@ -5,16 +5,16 @@
       = simple_form_for @contact, validate: true do |f|
         = f.input :name, label: false, placeholder: "tên", validate: true
         = f.input :email, label: false, placeholder: "hộp thư", validate: true
-        = f.input :message,:as => :text, label: false, placeholder: "tin nhắn", validate: true
+        = f.input :message,:as => :text, label: false, placeholder: "lời nhắn", validate: true
         .hidden
           = f.input :nickname, :hint => 'Leave this field blank!'
         div
-          = f.button :submit, 'Gửi', :class=> "btn btn-primary"
+          = f.button :submit, 'Gửi', :class=> "btn btn-success btn-primary"
   .col-sm-4
     section#message
       br
       br
-      strong Vui lòng gửi tin nhắn về:
+      strong Vui lòng gửi lời nhắn về:
       ul
         li Lỗi về vận hành
         li Các ý tưởng cho chọn đi

@@ -2,7 +2,7 @@ h3
   | Bình luận
 = simple_form_for [@poll, Comment.new], html: { id: @poll.normalized_id }, remote: signed_in?, validate: true do |f|
   = f.input :body, placeholder: "Để lại lời bình", label: false, validate: true
-  = f.button :submit, value: "Gửi"
+  = f.button :submit, value: "Gửi", class: "btn-success"
 hr
 ul.comment-list
   = render(partial: 'comments/comment', collection: @comments)

@@ -2,16 +2,7 @@
   border-radius: 0px;
 }
 
-.dropdown .btn-default {
-  background-color: transparent !important;
-  border: none !important;
-  color: #9d9d9d !important;
-  font-size: 1em !important;
-  height: 48px !important;
-  outline: none !important;
-}
-
-.navbar-nav > li > .dropdown > .dropdown-menu > li > a:hover {
+.navbar-nav > li.dropdown > .dropdown-menu > li > a:hover {
   background-color: #0366d6;
   background-image: none;
   color: white;

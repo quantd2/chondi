@@ -23,7 +23,7 @@ module PollHelper
   end
 
   def option_name_display name
-    request.path_info.include?("poll") ? name : truncate(name, length: 20)
+    request.path_info.include?("poll") ? name : truncate(name, length: 30)
   end
 
   def comment_poll_name_display?
