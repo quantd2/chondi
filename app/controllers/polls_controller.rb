@@ -23,6 +23,7 @@ class PollsController < ApplicationController
       if @poll.save
         redirect_to url_for(:controller => :welcome, :action => :index), notice: "Tạo thành công nhóm chọn."
       else
+        puts @poll.errors
         redirect_to new_poll_path, alert: "Vui lòng thử lại sau."
       end
     else
