@@ -24,7 +24,7 @@ class PollsController < ApplicationController
         redirect_to url_for(:controller => :welcome, :action => :index), notice: "Tạo thành công nhóm chọn."
       else
         Rails.logger.debug "***************************************************"
-        Rails.logger.debug @poll.errors
+        Rails.logger.debug @poll.errors.full_messages
         redirect_to new_poll_path, alert: "Vui lòng thử lại sau."
       end
     else
