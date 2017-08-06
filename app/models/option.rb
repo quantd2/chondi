@@ -7,6 +7,7 @@ class Option < ApplicationRecord
   belongs_to :poll, touch: true
 
   mount_uploader :image, ImageUploader
+  process_in_background :image
 
   has_reputation :votes, source: :user, aggregated_by: :sum
 end

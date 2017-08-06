@@ -1,13 +1,13 @@
+- provide(:title, 'phản hồi')
+
 .row
   .col-sm-8
     section#contact
       h3 Cám ơn bạn đã dành thời gian cho chọn đi.
-      = simple_form_for @contact, validate: true do |f|
+      = simple_form_for @feedback_message, validate: true do |f|
         = f.input :name, label: false, placeholder: "tên", validate: true
         = f.input :email, label: false, placeholder: "hộp thư", validate: true
-        = f.input :message,:as => :text, label: false, placeholder: "lời nhắn", validate: true
-        .hidden
-          = f.input :nickname, :hint => 'Leave this field blank!'
+        = f.input :content,:as => :text, label: false, placeholder: "lời nhắn", validate: true
         div
           = f.button :submit, 'Gửi', :class=> "btn btn-success btn-primary"
   .col-sm-4

@@ -1,9 +1,9 @@
 class ImageUploader < CarrierWave::Uploader::Base
-
+  include ::CarrierWave::Backgrounder::Delay
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  # include CarrierWaveDirect::Uploader
   include CarrierWave::MiniMagick
+
   # include CarrierWave::MimeTypes
   # process :set_content_type
 
