@@ -1,3 +1,6 @@
 li id="option_#{option.id}"
-  = image_tag option.image.medium.url
+  - if !option.image_processing
+	  = image_tag option.image.medium.url
+  - else
+    p.status style="text-align:center;" Processing... 
   = render "options/option_details", option: option, cached: true

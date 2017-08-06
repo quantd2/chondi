@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170802034940) do
+ActiveRecord::Schema.define(version: 20170806154714) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "body"
@@ -25,6 +25,15 @@ ActiveRecord::Schema.define(version: 20170802034940) do
   end
 
   create_table "contacts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "feedback_messages", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "concerning"
+    t.text     "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -49,10 +58,11 @@ ActiveRecord::Schema.define(version: 20170802034940) do
   create_table "options", force: :cascade do |t|
     t.integer  "poll_id"
     t.string   "name"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.string   "image"
     t.string   "remote_image_url"
+    t.boolean  "image_processing", default: false, null: false
     t.index ["poll_id"], name: "index_options_on_poll_id"
   end
 

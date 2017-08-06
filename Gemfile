@@ -58,17 +58,19 @@ gem 'activerecord-reputation-system'
 gem 'flexslider'
 gem 'actionpack-page_caching'
 gem 'actionpack-action_caching'
-gem 'mail_form'
+# gem 'mail_form'
 gem 'fog'
 gem 'font-awesome-rails'
 gem 'sidekiq'
-gem 'carrierwave_direct'
+gem 'carrierwave_backgrounder', :git => 'https://github.com/lardawge/carrierwave_backgrounder.git'
+gem 'sinatra', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platform: :mri
+  # gem 'byebug', platform: :mri
   gem 'dotenv-rails'
   gem 'rack-mini-profiler'
+  gem 'pry'
 end
 
 group :development do
