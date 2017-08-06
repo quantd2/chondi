@@ -1,5 +1,5 @@
 :queues:
   - carrierwave
-  - post_man
-
+  # - post_man
+  - mailers
 :verbose: true
