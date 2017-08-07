@@ -14,5 +14,6 @@ module Chondi
     config.i18n.default_locale = :vi
     config.action_controller.page_cache_directory = "#{Rails.root.to_s}/public/deploy"
     config.active_job.queue_adapter = :sidekiq
+    config.active_record.schema_format = :sql
   end
 end
