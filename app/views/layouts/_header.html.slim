@@ -2,18 +2,19 @@ header.navbar.navbar-inverse[role="navigation"]
   .container
     .navbar-header
       = link_to "chon di", root_path, class: "navbar-brand"
+      = render "layouts/header_search"
       button.navbar-toggle[type="button" data-toggle="collapse" data-target=".navbar-ex1-collapse"]
         span.sr-only
           | Toggle navigation
         span.icon-bar
         span.icon-bar
         span.icon-bar
-    .collapse.navbar-collapse.navbar-ex1-collapse.pull-right
-      ul.nav.navbar-nav
-        li
-          = link_to "Về chọn đi", welcome_about_path
+    .collapse.navbar-collapse.navbar-ex1-collapse
+      ul.nav.navbar-nav.navbar-right
         li
           = link_to "Phản hồi", new_feedback_message_path
+        li
+          = link_to "Về chọn đi", welcome_about_path
         - if signed_in?
           - if admin?
             li 

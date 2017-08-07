@@ -29,12 +29,16 @@ class Poll < ApplicationRecord
   def refresh_vote_count
     update(vote_count: votes_summary)
   end
-  # , before_add: :validate_option_limit
 
-  # def validate_option_limit option
-  #   unless self.options.size.between? MIN_OPTION_NUM, MAX_OPTION_NUM
-  #     errors.add(:options, message: 'bạn chỉ được tạo 2-5 sự lựa chọn')
-  #     raise Exception.new 'bạn chỉ được tạo 2-5 sự lựa chọn'
-  #   end
-  # end
+  def self.text_search(query)
+    if query.present?
+      rank = <<-RANK
+      ts_rank(to_tsvector(name), plainto_tsquery(#{sanitize(query)}))
+      RANK
+      where("name @@ :q", q: "%#{query}%").order("#{rank} desc")
+    else
+      self.all
+    end
+  end
+
 end
