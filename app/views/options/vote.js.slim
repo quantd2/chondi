@@ -4,7 +4,7 @@
 | $number = $option.find(".number");
 | $total = $option.parents(".poll").find(".total");
 | $stats = $option.find(".stats");
-| allStatsContent = #{raw visualize_vote_all_options(@option.poll.options)};
+| allStatsContent = #{raw visualize_vote_all_options(@option.poll.options.order(id: :asc))};
 | $allStats = $(".stats");
 
 - if params[:type] == "up"

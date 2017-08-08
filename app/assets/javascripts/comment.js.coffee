@@ -31,11 +31,6 @@ cancelComment = ($el) ->
   event.preventDefault()
   return
 
-refreshStats = (item, index, $el) ->
-  updatedStats = visualize_votes_for(item)
-  $el(index).html(updatedStats);
-  return
-
 deleteCommentQuestion = ($el) ->
   $el.next().show()
   $el.hide()

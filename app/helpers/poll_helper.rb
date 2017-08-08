@@ -17,7 +17,7 @@ module PollHelper
           "#{option.reputation_for(:votes)}"
         end
       end
-      all_stats.push raw stats.to_s
+      all_stats.push stats
     end
     return all_stats
   end
