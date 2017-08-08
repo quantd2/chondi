@@ -30,15 +30,16 @@ class Poll < ApplicationRecord
     update(vote_count: votes_summary)
   end
 
+  include PgSearch
+  pg_search_scope :search, against: [:name],
+    associated_against: {options: [:name]},
+    ignoring: :accents
+
   def self.text_search(query)
     if query.present?
-      rank = <<-RANK
-      ts_rank(to_tsvector(name), plainto_tsquery(#{sanitize(query)}))
-      RANK
-      where("name @@ :q", q: "%#{query}%").order("#{rank} desc")
+      search(query)
     else
       self.all
     end
   end
-
 end

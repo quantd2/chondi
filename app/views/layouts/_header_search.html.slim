@@ -1,6 +1,6 @@
 = form_tag welcome_index_path, method: :get, class:"navbar-form search", style: "display:inline-block;" do
-  .form-group
-    .input-group
-      = text_field_tag :query, params[:query], class: "form-control", placeholder:"Tìm"
-    = button_tag("", class: "form-control btn btn-default") do 
-      i class="glyphicon glyphicon-search"
+  .input-group
+    = text_field_tag :query, params[:query], class: "form-control", placeholder:"Tìm"
+    .input-group-btn
+      = button_tag("", class: "form-control btn btn-default") do 
+        i class="glyphicon glyphicon-search"
