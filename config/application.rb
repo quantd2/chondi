@@ -15,5 +15,12 @@ module Chondi
     config.action_controller.page_cache_directory = "#{Rails.root.to_s}/public/deploy"
     config.active_job.queue_adapter = :sidekiq
     config.active_record.schema_format = :sql
+
+    config.before_configuration do
+      env_file = File.join(Rails.root, 'config', 'prod_env.yml')
+      YAML.load(File.open(env_file)).each do |key, value|
+        ENV[key.to_s] = value
+      end if File.exists?(env_file)
+    end
   end
 end

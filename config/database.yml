@@ -36,7 +36,7 @@ production:
   adapter: postgresql
   encoding: unicode
   host: localhost
-  database: chondi
+  database: <%= ENV['DBNAME'] %>
   pool: 5
-  username: chondi
-  password: chondi
+  username: <%= ENV['DBUSERNAME'] %>
+  password: <%= ENV['DBPASS'] %>
