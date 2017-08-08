@@ -35,7 +35,6 @@ ready = ->
       image_holder = $(this).closest('fieldset').find('#previewImage')
       image_holder.empty()
       reader = new FileReader
-      console.log($(this))
       reader.onload = (e) ->
         $('<img />',
           'src': e.target.result
