@@ -1,4 +1,5 @@
 require 'sidekiq/web'
+require 'admin_constraint'
 
 Rails.application.routes.draw do
 
@@ -37,6 +38,8 @@ Rails.application.routes.draw do
     get '', to: 'dashboard#index', as: '/'
     resources :polls
     resources :comments
+    mount Sidekiq::Web, at: '/sidekiq', :constraints => AdminConstraint.new
+    # mount Sidekiq::Web, at: "/sidekiq"
   end
 
   resources :user do
@@ -44,9 +47,6 @@ Rails.application.routes.draw do
     resources :comments, only: :index
   end
 
-  # match "feedback" => "feedback_messages#new", :as => "feedback", via: :get
   resources :feedback_messages
-
-  mount Sidekiq::Web, at: "/sidekiq"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
