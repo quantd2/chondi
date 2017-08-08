@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap-sass-official
+//= require bootstrap-sprockets
 //= require turbolinks
 //= require rails.validations
 //= require rails.validations.simple_form
