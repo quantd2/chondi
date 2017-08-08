@@ -73,12 +73,12 @@ namespace :deploy do
     end
   end
 
-  # desc 'Restart sidekiq'
-  # task :restart_sidekiq do
-  #   on roles(:app) do
-  #     execute :sudo, :systemctl, :restart, :sidekiq
-  #   end
-  # end
+  desc 'Restart sidekiq'
+  task :restart_sidekiq do
+    on roles(:app) do
+      execute :sudo, :systemctl, :restart, :sidekiq
+    end
+  end
 
   before :starting,     :check_revision
   after  :finishing,    :compile_assets
