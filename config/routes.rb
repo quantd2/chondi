@@ -38,8 +38,8 @@ Rails.application.routes.draw do
     get '', to: 'dashboard#index', as: '/'
     resources :polls
     resources :comments
-    mount Sidekiq::Web, at: '/sidekiq', :constraints => AdminConstraint.new
-    # mount Sidekiq::Web, at: "/sidekiq"
+    # mount Sidekiq::Web, at: '/sidekiq', :constraints => AdminConstraint.new
+    mount Sidekiq::Web, at: "/sidekiq"
   end
 
   resources :user do
