@@ -19,6 +19,22 @@ addOption = ($el) ->
   event.preventDefault()
   return
 
+validateUploadedFileType = ($el) ->
+  $this = $el
+  $this.parent().find(".image.help-block").remove()
+  fileExtension = [
+    'jpeg'
+    'jpg'
+    'png'
+    'gif'
+  ]
+  if $.inArray($this.val().split('.').pop().toLowerCase(), fileExtension) == -1
+    $this.val('')
+    $('<span />',
+      'class': "image help-block").text('Chỉ hỗ trợ các loại: ' + fileExtension.join(', ')).appendTo($this.parent())
+  return
+  return
+
 
 ready = ->
   $('form').on 'click', '.remove_fields', (event) ->
@@ -32,17 +48,16 @@ ready = ->
 
   $("form").on 'change', "[type=file]", ->
     if typeof FileReader != 'undefined'
-      image_holder = $(this).closest('fieldset').find('#previewImage')
-      image_holder.empty()
+      image_preview = $(this).closest('fieldset').find('#previewImage')
+      image_preview.empty()
       reader = new FileReader
+      validateUploadedFileType($(this))
       reader.onload = (e) ->
         $('<img />',
           'src': e.target.result
-          'class': 'thumb-image').appendTo image_holder
-        console.log($(this))
+          'class': 'thumb-image').appendTo image_preview
         return
-
-      image_holder.show()
+      image_preview.show()
       reader.readAsDataURL $(this)[0].files[0]
     else
       alert 'This browser does not support FileReader.'

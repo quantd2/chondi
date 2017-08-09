@@ -39,7 +39,7 @@ class Poll < ApplicationRecord
     if query.present?
       search(query)
     else
-      self.all
+      self.all.desc
     end
   end
 end

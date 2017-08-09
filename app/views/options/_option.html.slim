@@ -2,5 +2,6 @@ li id="option_#{option.id}"
   - if !option.image_processing
 	  = image_tag option.image.medium.url
   - else
-    p.status style="text-align:center;" Processing... 
+    p.processing Đang xử lý hình ảnh của bạn...
+
   = render "options/option_details", option: option, cached: true

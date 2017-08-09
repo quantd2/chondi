@@ -1,13 +1,6 @@
 = simple_form_for @poll, validate: true do |f|
   - if @poll.errors.any?
-    .alert-danger
-      h2
-        = pluralize(@poll.errors.count, "error")
-        | không thể tạo nhóm lựa chọn đươc vì:
-      ul
-        - @poll.errors.full_messages.each do |msg|
-          li
-            = msg
+    = render "shared/error_messages", resource: @poll
   = f.input :name, label: false, placeholder: "Tên nhóm lựa chọn", validate: true
   - 2.times do
     = f.simple_fields_for :options, Option.new do |builder|

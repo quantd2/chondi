@@ -23,10 +23,10 @@ class PollsController < ApplicationController
       if @poll.save
         redirect_to url_for(:controller => :welcome, :action => :index), notice: "Tạo thành công nhóm chọn."
       else
-        redirect_to new_poll_path, alert: "Vui lòng thử lại sau."
+        render :new
       end
     else
-      redirect_to new_poll_path, alert: "Bạn chỉ được có 2-5 lựa chọn"
+      redirect_to new_poll_path, alert: "Bạn chỉ được có từ 2 đến 5 lựa chọn"
     end
   end
 

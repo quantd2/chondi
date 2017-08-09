@@ -3,8 +3,6 @@ class WelcomeController < ApplicationController
 
   def index
     # @polls = Poll.all.includes(:options).desc.page params[:page]
-    redis_info = Sidekiq.redis { |conn| conn.info }
-    logger.debug redis_info['connected_clients']
     text_preprocessed = strip_accent(params[:query])
     @polls = Poll.text_search(text_preprocessed).includes(:options).page(params[:page])
   end

@@ -11,7 +11,7 @@
 
 .new_poll input[name="commit"], .add_fields.btn {
   position: absolute;
-  bottom: 0px;
+  bottom: -3em;
   left: 0px;
 }
 
@@ -39,4 +39,8 @@
   right: 22px;
   top: 5px;
   z-index: 1;
+}
+
+.help-block {
+  color: #a94442;
 }
