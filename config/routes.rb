@@ -39,7 +39,10 @@ Rails.application.routes.draw do
     resources :polls
     resources :comments
     # mount Sidekiq::Web, at: '/sidekiq', :constraints => AdminConstraint.new
-    mount Sidekiq::Web, at: "/sidekiq"
+    authenticate :user, lambda { |user| user.admin == true } do
+      mount Sidekiq::Web, at: '/sidekiq'
+    end
+    # mount Sidekiq::Web, at: "/sidekiq"
   end
 
   resources :user do
