@@ -2,4 +2,4 @@
   - carrierwave
   - mailers
 :verbose: true
-# :environment: production
+:environment: <%= ENV['ENVIRONMENT'] %>

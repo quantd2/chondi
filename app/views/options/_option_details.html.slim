@@ -1,7 +1,8 @@
-.option-name = option_name_display option.name
+h4.option-name = option_name_display option.name
 .vote
   .number
     = option.reputation_for(:votes).to_i
     |  phiếu
   .action
     = render "votes/vote", votable: option, cached: true
+    

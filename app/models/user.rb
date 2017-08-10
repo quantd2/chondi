@@ -15,6 +15,8 @@ class User < ApplicationRecord
   validates :email, :password, presence: true
 
   mount_uploader :image, ImageUploader
+  process_in_background :image
+  
   scope :admin_user, -> { where(admin: true) }
 
   def vote_cache_key votable

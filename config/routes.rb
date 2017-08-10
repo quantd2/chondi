@@ -1,5 +1,4 @@
 require 'sidekiq/web'
-require 'admin_constraint'
 
 Rails.application.routes.draw do
 
@@ -34,15 +33,13 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    # get 'dashboard/index'
     get '', to: 'dashboard#index', as: '/'
     resources :polls
     resources :comments
-    # mount Sidekiq::Web, at: '/sidekiq', :constraints => AdminConstraint.new
+    resources :users
     authenticate :user, lambda { |user| user.admin == true } do
       mount Sidekiq::Web, at: '/sidekiq'
     end
-    # mount Sidekiq::Web, at: "/sidekiq"
   end
 
   resources :user do

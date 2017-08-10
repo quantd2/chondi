@@ -32,7 +32,7 @@ class PollsController < ApplicationController
 
   def destroy
     @poll.destroy
-    redirect_to polls_url, notice: "Xoá nhóm chọn thành công."
+    redirect_to root_path, notice: "Xoá nhóm chọn thành công."
   end
 
   private

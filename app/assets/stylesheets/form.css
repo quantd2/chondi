@@ -1,8 +1,8 @@
 .option-fields {
-  height: 9.5em;
+  height: 12em;
 }
 
-[type="file"] {
+.option-fields [type="file"] {
   position: absolute;
   top: 0px;
   right: -187px;
@@ -11,7 +11,7 @@
 
 .new_poll input[name="commit"], .add_fields.btn {
   position: absolute;
-  bottom: -3em;
+  bottom: 0px;
   left: 0px;
 }
 
@@ -23,7 +23,7 @@
   margin-top: 0em;
 }
 
-#previewImage img {
+.option-fields #previewImage img {
   width: 30px;
   height: 30px;
   position: absolute;
@@ -34,7 +34,7 @@
 }
 
 
-.fa-picture-o {
+.option-fields .fa-picture-o {
   position: absolute;
   right: 22px;
   top: 5px;

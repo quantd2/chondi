@@ -1,7 +1,8 @@
 ready = ->
 
   clearNotice = ->
-    $('.alert-info').animate { opacity: '0' }, 1500
+    # $('.alert-info').animate { opacity: '0' }, 3500
+    $('.alert-info').fadeOut()
     return
 
   $ ->

@@ -1,0 +1,16 @@
+= link_to 'báo cáo', "#", data: {toggle: "modal", target: "#Reportmodal"}
+#Reportmodal.modal.fade[tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"]
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close[type="button" data-dismiss="modal" aria-hidden="true"]
+          | ×
+        h3#myModalLabel.modal-title
+          | Xác nhận
+      .modal-body
+        h4
+          | Xin lỗi đã để bạn thấy nội dung không thích hợp, vui lòng tiếp tục để hoàn thành báo cáo.
+      .modal-footer
+        button.btn.btn-default[type="button" data-dismiss="modal"]
+          | Thoát
+        = link_to "báo cáo", path_send("#{reportable.normalized_name}" + "_reports_path", reportable), class:"btn btn-warning", method: :post

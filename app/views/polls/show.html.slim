@@ -8,6 +8,6 @@
   = render partial: 'vote_option', collection: @poll.options.order(id: :asc), as: :option
   - if owner? @poll.user
     .settings
-      =  link_to "Xoá", poll_path(@poll), class:"delete-poll btn btn-danger", method: :delete, data: { confirm: "Bạn có muốn xoá nhóm '#{@poll.name}' không?" }
+      = render "del_modal", poll: @poll
   hr
   = render "comments/form", cached: true

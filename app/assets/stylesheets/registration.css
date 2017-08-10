@@ -1,0 +1,24 @@
+#new_user {
+  position: relative;
+}
+
+#new_user #previewImage img {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  right: 2px;
+  top: 1px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+#new_user .fa-picture-o {
+  position: absolute;
+  right: 2px;
+  top: 4px;
+  z-index: 1;
+}
+
+.fa-3x {
+  font-size: 1.7em;
+}

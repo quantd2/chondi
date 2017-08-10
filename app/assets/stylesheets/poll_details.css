@@ -24,3 +24,8 @@
   bottom: 1.5em;
   position: absolute;
 }
+
+.media-heading h4.option-name {
+  margin: 0px;
+  text-align: left;
+}
