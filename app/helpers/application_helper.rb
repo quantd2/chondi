@@ -40,5 +40,9 @@ module ApplicationHelper
   def admin?
     current_user.admin ? true : false
   end
+
+  def meta_description(desc = nil)
+    content_for :meta_description, desc
+  end
 end
 #
