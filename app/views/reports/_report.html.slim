@@ -5,4 +5,4 @@
     / = link_to "báo cáo", path_send("#{reportable.normalized_name}" + "_reports_path", reportable), method: :post, data: {confirm: "Xin lỗi đã để bạn thấy nội dung không thích hợp, vui lòng ấn OK để hoàn thành báo cáo."}
     = render "reports/report_modal", reportable: reportable
 - else
-    = link_to "báo cáo", path_send("#{reportable.normalized_name}" + "_reports_path", reportable), method: :post, data: {confirm: "Xin lỗi đã để bạn thấy nội dung không thích hợp, vui lòng ấn OK để hoàn thành báo cáo."}
+    = render "reports/report_modal", reportable: reportable
