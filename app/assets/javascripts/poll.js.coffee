@@ -72,6 +72,21 @@ ready = ->
       alert 'This browser does not support FileReader.'
     return
 
+  $("form#new_poll").on 'click', ->
+    optNumber = $(".option-fields").length
+    console.log(optNumber)
+    if optNumber <= 2 && optNumber >= 0
+      $(".add_fields").show()
+      $(".remove_fields").hide()
+    else if optNumber > 2 && optNumber < 5
+      $(".add_fields").show()
+      $(".remove_fields").show()
+    else if optNumber >= 5
+      $(".add_fields").hide()
+      $(".remove_fields").show()
+      return
+    return
+
   # $("a.fancybox").fancybox()
   #   openEffect	: 'none'
 	# 	closeEffect	: 'none'

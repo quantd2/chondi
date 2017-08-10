@@ -1,13 +1,13 @@
-#new_user {
+#new_user fieldset {
   position: relative;
 }
 
 #new_user #previewImage img {
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   position: absolute;
   right: 2px;
-  top: 1px;
+  top: 2px;
   pointer-events: none;
   z-index: 2;
 }

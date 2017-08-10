@@ -2,7 +2,8 @@
   li
     media id="show_comment_#{comment.id}"
       .media-left
-        = image_tag comment.user.image.thumb.url.gsub('/user','/form_user'), class: "media-object"
+        / = image_tag comment.user.image.thumb.url.gsub('/user','/form_user'), class: "media-object"
+        = image_tag comment.user.image.thumb.url, class: "media-object"
       .media-body
         .media-heading
           - if comment.comments.present?
